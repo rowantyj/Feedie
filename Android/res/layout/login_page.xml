@@ -87,11 +87,11 @@
             android:text="Sign In" />
 
         <Button
-            android:id="@+id/SUBTn"
+            android:id="@+id/SUBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClick"
             android:text="Sign Up" />
-
     </LinearLayout>
 
 </LinearLayout>
