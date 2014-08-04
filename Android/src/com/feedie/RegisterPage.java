@@ -5,7 +5,6 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -51,15 +50,16 @@ public class RegisterPage extends Activity
 	    ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this,
 	            android.R.layout.simple_spinner_item, months);
 
-	    Spinner spinMonth = (Spinner) findViewById(R.id.monthSpinner);
+	    final Spinner spinMonth = (Spinner) findViewById(R.id.monthSpinner);
 	    spinMonth.setAdapter(monthAdapter);
 	    
 	    //Populate day Spinner
 	    final ArrayList<String> days = new ArrayList<String>();
-	    	    
+	    final Spinner spinDay = (Spinner) findViewById(R.id.daySpinner);
+	    	
+	    //If Months is changed
 	    spinMonth.setOnItemSelectedListener(new OnItemSelectedListener()
 	    {
-
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id)
@@ -72,6 +72,11 @@ public class RegisterPage extends Activity
 					for (int i = 1; i < 32; i++)
 				    {
 				    	days.add(Integer.toString(i));
+				    	
+				    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+					    		android.R.layout.simple_spinner_item, days);
+				    	
+					    spinDay.setAdapter(dayAdapter);
 				    }
 				}
 				//February
@@ -83,6 +88,12 @@ public class RegisterPage extends Activity
 						for (int i = 1; i < 30; i++)
 					    {
 					    	days.add(Integer.toString(i));
+					    	
+					    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+						    		android.R.layout.simple_spinner_item, days);
+						    
+						    
+						    spinDay.setAdapter(dayAdapter);
 					    }
 					}
 					else
@@ -90,6 +101,12 @@ public class RegisterPage extends Activity
 						for (int i = 1; i < 29; i++)
 					    {
 					    	days.add(Integer.toString(i));
+					    	
+					    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+						    		android.R.layout.simple_spinner_item, days);
+						    
+						    
+						    spinDay.setAdapter(dayAdapter);
 					    }
 					}
 				}
@@ -99,6 +116,12 @@ public class RegisterPage extends Activity
 					for (int i = 1; i < 31; i++)
 				    {
 				    	days.add(Integer.toString(i));
+				    	
+				    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+					    		android.R.layout.simple_spinner_item, days);
+					    
+					    
+					    spinDay.setAdapter(dayAdapter);
 				    }
 				}
 			}
@@ -109,45 +132,60 @@ public class RegisterPage extends Activity
 			}
 	    
 	    });
-	    
-	    /*for (int i = 1; i < 32; i++)
-	    {
-	    	days.add(Integer.toString(i));
-	    }*/
-	    
-	    if (spinMonth.getSelectedItemPosition() == 0 || spinMonth.getSelectedItemPosition() == 2 
-	    		|| spinMonth.getSelectedItemPosition() == 4 || spinMonth.getSelectedItemPosition() == 8 
-	    		|| spinMonth.getSelectedItemPosition() == 9 || spinMonth.getSelectedItemPosition() == 11)
-	    {
-	    	Log.e("MONTH", Integer.toString(spinMonth.getSelectedItemPosition()));
-	    	/*for (int i = 1; i < 32; i++)
-		    {
-		    	days.add(Integer.toString(i));
-		    }*/
-	    }
-	    else if(spinMonth.getSelectedItemPosition() == 1)
-	    {
-	    	Log.e("MONTH", Integer.toString(spinMonth.getSelectedItemPosition()));
-	    	/*for (int i = 1; i < 29; i++)
-		    {
-		    	days.add(Integer.toString(i));
-		    }*/
-	    }
-	    else
-	    {
-	    	Log.e("MONTH", Integer.toString(spinMonth.getSelectedItemPosition()));
-	    	/*for (int i = 1; i < 31; i++)
-		    {
-		    	days.add(Integer.toString(i));
-		    }*/
-	    }
 
-	    ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(this, 
-	    		android.R.layout.simple_spinner_item, days);
-	    
-	    Spinner spinDay = (Spinner) findViewById(R.id.daySpinner);
-	    spinDay.setAdapter(dayAdapter);
+	    //If Year is changed
+	    spinYear.setOnItemSelectedListener(new OnItemSelectedListener(){
 
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+				//Leap Year
+				if(Integer.parseInt(spinYear.getItemAtPosition(position).toString()) % 4 == 0)
+				{
+					//February
+					if(spinMonth.getSelectedItemPosition() == 1)
+					{
+						days.clear();
+						for (int i = 1; i < 30; i++)
+					    {
+					    	days.add(Integer.toString(i));
+					    	
+					    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+						    		android.R.layout.simple_spinner_item, days);
+						    
+						    
+						    spinDay.setAdapter(dayAdapter);
+					    }
+					}
+				}
+				//Not Leap Year
+				else
+				{
+					//February
+					if(spinMonth.getSelectedItemPosition() == 1)
+					{
+						days.clear();
+						for (int i = 1; i < 29; i++)
+					    {
+					    	days.add(Integer.toString(i));
+					    	
+					    	ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(RegisterPage.this, 
+						    		android.R.layout.simple_spinner_item, days);
+						    
+						    
+						    spinDay.setAdapter(dayAdapter);
+					    }
+					}
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent)
+			{
+				// TODO Auto-generated method stub
+				
+			}});
 	}
 
 }
