@@ -332,6 +332,7 @@ public class RegisterPage extends Activity implements OnClickListener
 		/** After completing background task Dismiss the progress dialog **/
 		protected void onPostExecute(String file_url)
 			{
+<<<<<<< HEAD
 			// dismiss the dialog once product deleted
 			pDialog.dismiss();
 			if (file_url != null)
@@ -341,6 +342,9 @@ public class RegisterPage extends Activity implements OnClickListener
 
 			}
 
+=======
+			}});
+>>>>>>> FETCH_HEAD
 	}
 
 }
