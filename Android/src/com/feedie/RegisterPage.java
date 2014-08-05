@@ -21,7 +21,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,7 +36,14 @@ public class RegisterPage extends Activity implements OnClickListener
 
 	private ProgressDialog			pDialog;
 	private Button							submitBtn;
-	private EditText						emailET, passwordET;
+	private EditText						usernameET, passwordET, confirmPassET, emailET,
+															nameET, countryET;
+
+	private RadioButton					maleRB, femaleRB;
+
+	private String							dayStr, monthStr, yearStr;
+	private String								gender;
+	private Spinner							spinYear, spinMonth, spinDay;
 
 	JSONParser									jsonParser	= new JSONParser();
 
@@ -60,11 +71,19 @@ public class RegisterPage extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_page);
 
-		
-		emailET = (EditText) findViewById(R.id.emailET);
+		usernameET = (EditText) findViewById(R.id.usernameET);
 		passwordET = (EditText) findViewById(R.id.passwordET);
-		
+		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
+		emailET = (EditText) findViewById(R.id.emailET);
+		nameET = (EditText) findViewById(R.id.nameET);
+		countryET = (EditText) findViewById(R.id.countryET);
+		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
+
+		maleRB = (RadioButton) findViewById(R.id.radioMale);
+		femaleRB = (RadioButton) findViewById(R.id.radioFemale);
+
 		submitBtn = (Button) findViewById(R.id.submitBtn);
+
 		submitBtn.setOnClickListener(this);
 
 		// Populate year Spinner
@@ -80,7 +99,7 @@ public class RegisterPage extends Activity implements OnClickListener
 		ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, years);
 
-		final Spinner spinYear = (Spinner) findViewById(R.id.yearSpinner);
+		spinYear = (Spinner) findViewById(R.id.yearSpinner);
 		spinYear.setAdapter(yearAdapter);
 
 		// Populate month Spinner
@@ -108,12 +127,12 @@ public class RegisterPage extends Activity implements OnClickListener
 		ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, months);
 
-		final Spinner spinMonth = (Spinner) findViewById(R.id.monthSpinner);
+		spinMonth = (Spinner) findViewById(R.id.monthSpinner);
 		spinMonth.setAdapter(monthAdapter);
 
 		// Populate day Spinner
 		final ArrayList<String> days = new ArrayList<String>();
-		final Spinner spinDay = (Spinner) findViewById(R.id.daySpinner);
+		spinDay = (Spinner) findViewById(R.id.daySpinner);
 
 		// If Months is changed
 		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener()
@@ -187,6 +206,9 @@ public class RegisterPage extends Activity implements OnClickListener
 							spinDay.setAdapter(dayAdapter);
 							}
 						}
+
+					monthStr = position + 1 + "";
+
 					}
 
 				@Override
@@ -242,10 +264,33 @@ public class RegisterPage extends Activity implements OnClickListener
 								}
 							}
 						}
+
+					yearStr = spinYear.getItemAtPosition(position) + "";
+
 					}
 
 				@Override
 				public void onNothingSelected(AdapterView<?> parent)
+					{
+					// TODO Auto-generated method stub
+
+					}
+
+			});
+		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
+			{
+
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view,
+						int position,
+						long id)
+					{
+
+					dayStr = position + 1 + "";
+					}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0)
 					{
 					// TODO Auto-generated method stub
 
@@ -262,6 +307,24 @@ public class RegisterPage extends Activity implements OnClickListener
 			new CreateUser().execute();
 			}
 
+		}
+
+	public void onRadioButtonClicked(View view)
+		{
+
+		boolean checked = ((RadioButton) view).isChecked();
+
+		switch (view.getId())
+			{
+			case R.id.radioMale:
+				if (checked)
+					gender = "M";
+				break;
+			case R.id.radioFemale:
+				if (checked)
+					gender = "F";
+				break;
+			}
 		}
 
 	class CreateUser extends AsyncTask<String, String, String> {
@@ -286,14 +349,25 @@ public class RegisterPage extends Activity implements OnClickListener
 			// TODO Auto-generated method stub
 			// Check for success tag
 			int success;
-			String username = emailET.getText().toString();
+			String username = usernameET.getText().toString();
 			String password = passwordET.getText().toString();
+			String email = emailET.getText().toString();
+			String name = nameET.getText().toString();
+			// Gender is already at the top
+			String date_of_birth = yearStr + "-" + monthStr + "-" + dayStr;
+			String country = countryET.getText().toString();
+
 			try
 				{
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("username", username));
 				params.add(new BasicNameValuePair("password", password));
+				params.add(new BasicNameValuePair("email", email));
+				params.add(new BasicNameValuePair("name", name));
+				params.add(new BasicNameValuePair("gender", gender));
+				params.add(new BasicNameValuePair("date_of_birth", date_of_birth));
+				params.add(new BasicNameValuePair("country", country));
 
 				Log.d("request!", "starting");
 
@@ -308,7 +382,7 @@ public class RegisterPage extends Activity implements OnClickListener
 				success = json.getInt(TAG_SUCCESS);
 				if (success == 1)
 					{
-					Log.d("User Created!", json.toString());
+					Log.d("Account Created!", json.toString());
 					finish();
 					Intent i = new Intent(RegisterPage.this, LoginPage.class);
 					startActivity(i);
@@ -340,7 +414,6 @@ public class RegisterPage extends Activity implements OnClickListener
 				}
 
 			}
-			
 
 	}
 
