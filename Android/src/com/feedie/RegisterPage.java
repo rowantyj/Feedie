@@ -34,19 +34,18 @@ import com.feedie.utils.JSONParser;
 public class RegisterPage extends Activity implements OnClickListener
 {
 
-	private ProgressDialog		pDialog;
-	private Button				submitBtn;
-	private EditText			usernameET, passwordET, confirmPassET, emailET,
-			nameET, countryET;
+	private ProgressDialog			pDialog;
+	private Button							submitBtn;
+	private EditText						usernameET, passwordET, confirmPassET, emailET,
+															nameET, countryET;
 
-	private RadioButton			maleRB, femaleRB;
+	private RadioButton					maleRB, femaleRB;
 
-	private String				dayStr, monthStr, yearStr;
-	private String				gender;
-	private Spinner				spinYear, spinMonth, spinDay;
+	private String							dayStr, monthStr, yearStr;
+	private String								gender;
+	private Spinner							spinYear, spinMonth, spinDay;
 
-	JSONParser					jsonParser	= new JSONParser();
-	int dayIndex;
+	JSONParser									jsonParser	= new JSONParser();
 
 	// php login script location:
 
@@ -54,15 +53,13 @@ public class RegisterPage extends Activity implements OnClickListener
 	// testing on your device
 	// put your local ip instead, on windows, run CMD > ipconfig
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
-	private static final String	LOGIN_URL	= "http://192.168.0.103:80/feedie/register.php";
+	private static final String	LOGIN_URL		= "http://192.168.1.5:80/feedie/register.php";
 
 	// testing on Emulator:
-	// private static final String LOGIN_URL =
-	// "http://10.0.2.2:1234/webservice/login.php";
+	// private static final String LOGIN_URL = "http://10.0.2.2:1234/webservice/login.php";
 
 	// testing from a real server:
-	// private static final String LOGIN_URL =
-	// "http://www.yourdomain.com/webservice/login.php";
+	// private static final String LOGIN_URL = "http://www.yourdomain.com/webservice/login.php";
 
 	// JSON element ids from response of php script:
 	private static final String	TAG_SUCCESS	= "success";
@@ -70,18 +67,10 @@ public class RegisterPage extends Activity implements OnClickListener
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
-	{
+		{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_page);
 
-		initView();
-		
-		dob();
-
-	}
-	
-	void initView()
-	{
 		usernameET = (EditText) findViewById(R.id.usernameET);
 		passwordET = (EditText) findViewById(R.id.passwordET);
 		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
@@ -96,21 +85,16 @@ public class RegisterPage extends Activity implements OnClickListener
 		submitBtn = (Button) findViewById(R.id.submitBtn);
 
 		submitBtn.setOnClickListener(this);
-	}
 
-	void dob()
-	{
-		dayIndex = 0;
-		
 		// Populate year Spinner
 		ArrayList<String> years = new ArrayList<String>();
 
 		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 
 		for (int i = 1900; i <= thisYear; i++)
-		{
+			{
 			years.add(Integer.toString(i));
-		}
+			}
 
 		ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, years);
@@ -121,14 +105,24 @@ public class RegisterPage extends Activity implements OnClickListener
 		// Populate month Spinner
 		ArrayList<String> months = new ArrayList<String>();
 
-		String monthArray[] = { "January", "February", "March", "April", "May",
-				"June", "July", "August", "September", "October", "November",
-				"December" };
+		String monthArray[] = {
+						"January",
+						"February",
+						"March",
+						"April",
+						"May",
+						"June",
+						"July",
+						"August",
+						"September",
+						"October",
+						"November",
+						"December" };
 
 		for (int i = 0; i < 12; i++)
-		{
+			{
 			months.add(monthArray[i]);
-		}
+			}
 
 		ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, months);
@@ -141,37 +135,23 @@ public class RegisterPage extends Activity implements OnClickListener
 		spinDay = (Spinner) findViewById(R.id.daySpinner);
 
 		// If Months is changed
-		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
+		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener()
 			{
-				days.clear();
-				// Months with 31 days
-				if (position == 0 || position == 2 || position == 4 || position == 6
-						|| position == 7 || position == 9 || position == 11)
-				{
-					for (int i = 1; i < 32; i++)
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view,
+						int position, long id)
 					{
-						days.add(Integer.toString(i));
-
-						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-								RegisterPage.this,
-								android.R.layout.simple_spinner_item, days);
-
-						spinDay.setAdapter(dayAdapter);
-						spinDay.setSelection(dayIndex);
-					}
-				}
-				// February
-				else if (position == 1)
-
-				{
-					//Leap Year
-					if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0)
-					{
-						for (int i = 1; i < 30; i++)
+					days.clear();
+					// Months with 31 days
+					if (position == 0
+							|| position == 2
+							|| position == 4
+							|| position == 8
+							|| position == 9
+							|| position == 11)
 						{
+						for (int i = 1; i < 32; i++)
+							{
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -179,165 +159,163 @@ public class RegisterPage extends Activity implements OnClickListener
 									android.R.layout.simple_spinner_item, days);
 
 							spinDay.setAdapter(dayAdapter);
-							if(dayIndex > 28)
-								spinDay.setSelection(28);
-							else
-								spinDay.setSelection(dayIndex);
+							}
 						}
-					}
-					//Not Leap Year
-					else
-					{
-						for (int i = 1; i < 29; i++)
+					// February
+					else if (position == 1)
+
 						{
-							days.add(Integer.toString(i));
+						if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0)
+							{
+							for (int i = 1; i < 30; i++)
+								{
+								days.add(Integer.toString(i));
 
-							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									RegisterPage.this,
-									android.R.layout.simple_spinner_item, days);
+								ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+										RegisterPage.this,
+										android.R.layout.simple_spinner_item, days);
 
-							spinDay.setAdapter(dayAdapter);
-							if(dayIndex > 27)
-								spinDay.setSelection(27);
-							else
-								spinDay.setSelection(dayIndex);
-						}
-					}
-				}
-				// Months with 30 days
-				else
-				{
-					for (int i = 1; i < 31; i++)
-					{
-						days.add(Integer.toString(i));
-
-						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-								RegisterPage.this,
-								android.R.layout.simple_spinner_item, days);
-
-						spinDay.setAdapter(dayAdapter);
-						if(dayIndex > 29)
-							spinDay.setSelection(29);
+								spinDay.setAdapter(dayAdapter);
+								}
+							}
 						else
-							spinDay.setSelection(dayIndex);
+							{
+							for (int i = 1; i < 29; i++)
+								{
+								days.add(Integer.toString(i));
+
+								ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+										RegisterPage.this,
+										android.R.layout.simple_spinner_item, days);
+
+								spinDay.setAdapter(dayAdapter);
+								}
+							}
+						}
+					// Months with 30 days
+					else
+						{
+						for (int i = 1; i < 31; i++)
+							{
+							days.add(Integer.toString(i));
+
+							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+									RegisterPage.this,
+									android.R.layout.simple_spinner_item, days);
+
+							spinDay.setAdapter(dayAdapter);
+							}
+						}
+
+					monthStr = position + 1 + "";
+
 					}
-				}
 
-				monthStr = position + 1 + "";
+				@Override
+				public void onNothingSelected(AdapterView<?> parent)
+					{
+					}
 
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent)
-			{
-			}
-
-		});
+			});
 
 		// If Year is changed
-		spinYear.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
+		spinYear.setOnItemSelectedListener(new OnItemSelectedListener()
 			{
-				// Leap Year
-				if (Integer.parseInt(spinYear.getItemAtPosition(position)
-						.toString()) % 4 == 0)
-				{
-					// February
-					if (spinMonth.getSelectedItemPosition() == 1)
+
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view,
+						int position, long id)
 					{
-						days.clear();
-						for (int i = 1; i < 30; i++)
+					// Leap Year
+					if (Integer.parseInt(spinYear.getItemAtPosition(position).toString()) % 4 == 0)
 						{
-							days.add(Integer.toString(i));
+						// February
+						if (spinMonth.getSelectedItemPosition() == 1)
+							{
+							days.clear();
+							for (int i = 1; i < 30; i++)
+								{
+								days.add(Integer.toString(i));
 
-							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									RegisterPage.this,
-									android.R.layout.simple_spinner_item, days);
+								ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+										RegisterPage.this,
+										android.R.layout.simple_spinner_item, days);
 
-							spinDay.setAdapter(dayAdapter);
-							if(dayIndex > 28)
-								spinDay.setSelection(28);
-							else
-								spinDay.setSelection(dayIndex);
+								spinDay.setAdapter(dayAdapter);
+								}
+							}
 						}
+					// Not Leap Year
+					else
+						{
+						// February
+						if (spinMonth.getSelectedItemPosition() == 1)
+							{
+							days.clear();
+							for (int i = 1; i < 29; i++)
+								{
+								days.add(Integer.toString(i));
+
+								ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
+										RegisterPage.this,
+										android.R.layout.simple_spinner_item, days);
+
+								spinDay.setAdapter(dayAdapter);
+								}
+							}
+						}
+
+					yearStr = spinYear.getItemAtPosition(position) + "";
+
 					}
-				}
-				// Not Leap Year
-				else
-				{
-					// February
-					if (spinMonth.getSelectedItemPosition() == 1)
+
+				@Override
+				public void onNothingSelected(AdapterView<?> parent)
 					{
-						days.clear();
-						for (int i = 1; i < 29; i++)
-						{
-							days.add(Integer.toString(i));
+					// TODO Auto-generated method stub
 
-							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									RegisterPage.this,
-									android.R.layout.simple_spinner_item, days);
-
-							spinDay.setAdapter(dayAdapter);
-							if(dayIndex > 27)
-								spinDay.setSelection(27);
-							else
-								spinDay.setSelection(dayIndex);
-						}
 					}
-				}
 
-				yearStr = spinYear.getItemAtPosition(position) + "";
-
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent)
+			});
+		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
 			{
-				// TODO Auto-generated method stub
 
-			}
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view,
+						int position,
+						long id)
+					{
 
-		});
-		spinDay.setOnItemSelectedListener(new OnItemSelectedListener() {
+					dayStr = position + 1 + "";
+					}
 
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
-			{
-				dayIndex = position;
-				dayStr = position + 1 + "";
-			}
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0)
+					{
+					// TODO Auto-generated method stub
 
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0)
-			{
-				// TODO Auto-generated method stub
-
-			}
-		});
-	}
-	
-	@Override
-	public void onClick(View v)
-	{
-
-		if (v.getId() == R.id.submitBtn)
-		{
-			new CreateUser().execute();
+					}
+			});
 		}
 
-	}
+	@Override
+	public void onClick(View v)
+		{
+
+		if (v.getId() == R.id.submitBtn)
+			{
+			new CreateUser().execute();
+			}
+
+		}
 
 	public void onRadioButtonClicked(View view)
-	{
+		{
 
 		boolean checked = ((RadioButton) view).isChecked();
 
 		switch (view.getId())
-		{
+			{
 			case R.id.radioMale:
 				if (checked)
 					gender = "M";
@@ -346,29 +324,28 @@ public class RegisterPage extends Activity implements OnClickListener
 				if (checked)
 					gender = "F";
 				break;
+			}
 		}
-	}
 
-	class CreateUser extends AsyncTask<String, String, String>
-	{
+	class CreateUser extends AsyncTask<String, String, String> {
 
 		/** Before starting background thread Show Progress Dialog */
 		boolean	failure	= false;
 
 		@Override
 		protected void onPreExecute()
-		{
+			{
 			super.onPreExecute();
 			pDialog = new ProgressDialog(RegisterPage.this);
 			pDialog.setMessage("Creating User...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(true);
 			pDialog.show();
-		}
+			}
 
 		@Override
 		protected String doInBackground(String... args)
-		{
+			{
 			// TODO Auto-generated method stub
 			// Check for success tag
 			int success;
@@ -381,7 +358,7 @@ public class RegisterPage extends Activity implements OnClickListener
 			String country = countryET.getText().toString();
 
 			try
-			{
+				{
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("username", username));
@@ -389,15 +366,14 @@ public class RegisterPage extends Activity implements OnClickListener
 				params.add(new BasicNameValuePair("email", email));
 				params.add(new BasicNameValuePair("name", name));
 				params.add(new BasicNameValuePair("gender", gender));
-				params.add(new BasicNameValuePair("date_of_birth",
-						date_of_birth));
+				params.add(new BasicNameValuePair("date_of_birth", date_of_birth));
 				params.add(new BasicNameValuePair("country", country));
 
 				Log.d("request!", "starting");
 
 				// Posting user data to script
-				JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST",
-						params);
+				JSONObject json = jsonParser.makeHttpRequest(
+						LOGIN_URL, "POST", params);
 
 				// full json response
 				Log.d("Login attempt", json.toString());
@@ -405,41 +381,39 @@ public class RegisterPage extends Activity implements OnClickListener
 				// json success element
 				success = json.getInt(TAG_SUCCESS);
 				if (success == 1)
-				{
+					{
 					Log.d("Account Created!", json.toString());
 					finish();
 					Intent i = new Intent(RegisterPage.this, LoginPage.class);
 					startActivity(i);
 					return json.getString(TAG_MESSAGE);
-				}
+					}
 				else
-				{
+					{
 					Log.d("Login Failure!", json.getString(TAG_MESSAGE));
 					return json.getString(TAG_MESSAGE);
 
-				}
-			}
-			catch (JSONException e)
-			{
+					}
+				} catch (JSONException e)
+				{
 				e.printStackTrace();
-			}
+				}
 
 			return null;
 
-		}
+			}
 
 		/** After completing background task Dismiss the progress dialog **/
 		protected void onPostExecute(String file_url)
-		{
+			{
 			// dismiss the dialog once product deleted
 			pDialog.dismiss();
 			if (file_url != null)
-			{
-				Toast.makeText(RegisterPage.this, file_url, Toast.LENGTH_LONG)
-						.show();
-			}
+				{
+				Toast.makeText(RegisterPage.this, file_url, Toast.LENGTH_LONG).show();
+				}
 
-		}
+			}
 
 	}
 
