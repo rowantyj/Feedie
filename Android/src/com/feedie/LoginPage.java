@@ -8,10 +8,12 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 //import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +35,9 @@ public class LoginPage extends Activity implements OnClickListener
 
 	// JSON parser class
 	JSONParser					jsonParser	= new JSONParser();
+
+	String SHAREDPREFERENCES = "SharedPreferences";
+	SharedPreferences sharedPreferences;
 
 	// php login script location:
 
@@ -74,6 +79,15 @@ public class LoginPage extends Activity implements OnClickListener
 		signInBtn.setOnClickListener(this);
 		signUpBtn.setOnClickListener(this);
 
+		sharedPreferences = getSharedPreferences(SHAREDPREFERENCES, 0);
+		
+		if(sharedPreferences.getBoolean("login", false) == true)
+		{
+			Intent i = new Intent(this, Home.class);
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			finish();
+			startActivity(i);
+		}
 	}
 
 	public void onClick(View v)
@@ -152,6 +166,8 @@ public class LoginPage extends Activity implements OnClickListener
 				{
 					Log.d("Login Successful!", json.toString());
 					Intent i = new Intent(LoginPage.this, Home.class);
+					
+					sharedPreferences.edit().putBoolean("login", true).commit();
 					finish();
 					startActivity(i);
 					return json.getString(TAG_MESSAGE);

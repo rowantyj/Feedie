@@ -409,8 +409,8 @@ public class RegisterPage extends Activity implements OnClickListener
 				{
 					Log.d("Account Created!", json.toString());
 					finish();
-					Intent i = new Intent(RegisterPage.this, LoginPage.class);
-					startActivity(i);
+					//Intent i = new Intent(RegisterPage.this, LoginPage.class);
+					//startActivity(i);
 					return json.getString(TAG_MESSAGE);
 				}
 				else
