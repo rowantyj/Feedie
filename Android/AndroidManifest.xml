@@ -16,7 +16,7 @@
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme" >
 		<activity
-			android:name="com.feedie.LoginPage"
+			android:name="com.feedie.Splash"
 			android:label="@string/app_name" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,16 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="com.feedie.RegisterPage"
+			android:name="com.feedie.Login"
+			android:label="@string/app_name" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.feedie.Register"
 			android:label="@string/app_name" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
