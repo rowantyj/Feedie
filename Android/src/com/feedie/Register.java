@@ -11,7 +11,6 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,10 +52,10 @@ public class Register extends Activity implements OnClickListener
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	
 	//Jun's IP
-	// private static final String LOGIN_URL = "http://192.168.0.103/feedie/register.php";  
+	 private static final String LOGIN_URL = "http://192.168.0.101/feedie/register.php";  
 	
 	//Rowan's IP
-	private static final String	LOGIN_URL		= "http://192.168.1.3/feedie/register.php";
+	//private static final String	LOGIN_URL		= "http://192.168.1.3/feedie/register.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =
@@ -96,6 +95,7 @@ public class Register extends Activity implements OnClickListener
 		maleRB = (RadioButton) findViewById(R.id.radioMale);
 		femaleRB = (RadioButton) findViewById(R.id.radioFemale);
 		maleRB.setChecked(true);
+		femaleRB.setChecked(false);
 		gender = "M";
 
 		submitBtn = (Button) findViewById(R.id.submitBtn);

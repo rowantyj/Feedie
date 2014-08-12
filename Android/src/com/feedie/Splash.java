@@ -20,11 +20,15 @@ public class Splash extends Activity
 		if(sharedPreferences.getBoolean("login", false) == true)
 		{
 			Intent i = new Intent(this,Home.class);
+			finish();
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(i);
 		}
 		else
 		{
 			Intent i = new Intent(this,Login.class);
+			finish();
+			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(i);
 		}
 	}
