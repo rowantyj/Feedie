@@ -1,4 +1,4 @@
-package com.feedie;
+package com.jabber;
 
 import android.app.Activity;
 import android.content.Intent;

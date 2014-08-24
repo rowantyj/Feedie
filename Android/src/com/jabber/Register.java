@@ -1,4 +1,4 @@
-package com.feedie;
+package com.jabber;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,7 +25,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.feedie.utils.JSONParser;
+import com.jabber.utils.JSONParser;
 
 public class Register extends Activity implements OnClickListener
 {

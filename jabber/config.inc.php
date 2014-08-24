@@ -4,7 +4,7 @@
     $username = "rowan"; 
     $password = "rowan"; 
     $host = "localhost"; 
-    $dbname = "Feedie_Test"; 
+    $dbname = "Jabber_Test"; 
 
 // UTF-8 is a character encoding scheme that allows you to conveniently store 
     // a wide varienty of special characters, like ¢ or €, in your database. 

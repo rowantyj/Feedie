@@ -1,4 +1,4 @@
-package com.feedie.utils;
+package com.jabber.utils;
  
 import java.io.BufferedReader;
 import java.io.IOException;

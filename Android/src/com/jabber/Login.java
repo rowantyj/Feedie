@@ -1,4 +1,4 @@
-package com.feedie;
+package com.jabber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.feedie.utils.JSONParser;
+import com.jabber.utils.JSONParser;
 
 public class Login extends Activity implements OnClickListener
 {
