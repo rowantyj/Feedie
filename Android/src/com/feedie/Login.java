@@ -47,7 +47,7 @@ public class Login extends Activity implements OnClickListener
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	
 	//Jun's IP
-	 private static final String LOGIN_URL = "http://192.168.0.101/feedie/login.php";  
+	 private static final String LOGIN_URL = "http://192.168.1.7/feedie/login.php";  
 	
 	//Rowan's IP
 	//private static final String	LOGIN_URL		= "http://192.168.1.3/feedie/login.php";

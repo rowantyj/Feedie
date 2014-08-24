@@ -47,21 +47,23 @@ public class Home extends Activity
 
 		drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-		
+
 
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
 				R.string.drawer_close)
 		{
 			//Called when a drawer has settled in a completely closed state
+			@Override
 			public void onDrawerClosed(View view)
 			{
 				//super.onDrawerClosed(view);
 				getActionBar().setTitle(title);
 				invalidateOptionsMenu(); // creates call to onPrepareOptionMenu()
 			}
-			
+
 			//Called when a drawer has settled in a completely open state
+			@Override
 			public void onDrawerOpened(View drawerView)
 			{
 				//super.onDrawerOpened(drawerView);
@@ -69,14 +71,14 @@ public class Home extends Activity
 				invalidateOptionsMenu();
 			}
 		};
-		
+
 		drawerLayout.setDrawerListener(drawerToggle);
-		
-		if (savedInstanceState == null) 
+
+		if (savedInstanceState == null)
 		{
             selectItem(0);
         }
-		
+
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 	}
@@ -85,26 +87,26 @@ public class Home extends Activity
 	protected void onPostCreate(Bundle savedInstanceState)
 	{
 		super.onPostCreate(savedInstanceState);
-		
+
 		//Sync the toggle state after onRestoreInstanceState has occurred
 		drawerToggle.syncState();
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig)
 	{
 		super.onConfigurationChanged(newConfig);
 		drawerToggle.onConfigurationChanged(newConfig);
 	}
-	
+
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu) 
+    public boolean onCreateOptionsMenu(Menu menu)
 	{
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-	
+
 	//Called whenever we call invalidateOptionMenu()
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu)
@@ -114,7 +116,7 @@ public class Home extends Activity
 		menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
@@ -125,7 +127,7 @@ public class Home extends Activity
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	// Custom listener for drawer item
 	class DrawerItemClickListener implements ListView.OnItemClickListener
 	{
