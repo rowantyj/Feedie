@@ -47,15 +47,15 @@ public class Login extends Activity implements OnClickListener
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	
 	//Jun's IP
-	 private static final String LOGIN_URL = "http://192.168.1.7/jabber/login.php";  
+//	 private static final String LOGIN_URL = "http://192.168.1.7/jabber/login.php";  
 	
 	//Rowan's IP
-	//private static final String	LOGIN_URL		= "http://192.168.1.3/feedie/login.php";
+	private static final String	LOGIN_URL		= "http://10.1.1.1/jabber/login.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =
 	// "http://10.0.2.2:1234/webservice/login.php";
-
+ 
 	// testing from a real server:
 	// private static final String LOGIN_URL =
 	// "http://www.yourdomain.com/webservice/login.php";

@@ -2,10 +2,10 @@
 Setting up Test Server
 
 Step 1: Download XAMPP Server
-Step 2: go to "XAMPP/htdocs/" , copy & paste Folder "feedie" into it.
+Step 2: go to "XAMPP/htdocs/" , copy & paste Folder “jabber” into it.
 Step 3: type "localhost" on browser.
-Step 4: go to phpMyAdmin, create a database called "Feedie_Test"
-Step 5: Select "Import", import file "Feedie_Test.sql".
+Step 4: go to phpMyAdmin, create a database called “Jabber_Test”
+
 
 
 Within Android Code:
