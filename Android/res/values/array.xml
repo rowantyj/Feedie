@@ -2,9 +2,10 @@
 <resources>
 
     <string-array name="Drawer_Item_List">
-        <item>Android_1</item>
-        <item>Android_2</item>
-        <item>Android_3</item>
+        <item>Topic-line</item>
+        <item>Explore</item>
+        <item>More</item>
+        <item>Scanner</item>
     </string-array>
 
 </resources>

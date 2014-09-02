@@ -1,9 +1,8 @@
 package com.jabber;
 
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 public class Home extends Activity
@@ -36,19 +34,22 @@ public class Home extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 
+		//AndroidManifest (android:label)
 		title = drawerTitle = getTitle();
+		
+		//(res/values/array.xml)
 		drawerItemTitles = getResources().getStringArray(
 				R.array.Drawer_Item_List);
+		
+		//(Root/Parent layout of Home Activity)
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		
 		drawerList = (ListView) findViewById(R.id.left_drawer);
-
 		drawerList.setAdapter(new ArrayAdapter<String>(this,
 				R.layout.drawer_list_item, drawerItemTitles));
-
 		drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-
-
+		//Top Left toggle
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
 				R.string.drawer_close)
@@ -57,7 +58,6 @@ public class Home extends Activity
 			@Override
 			public void onDrawerClosed(View view)
 			{
-				//super.onDrawerClosed(view);
 				getActionBar().setTitle(title);
 				invalidateOptionsMenu(); // creates call to onPrepareOptionMenu()
 			}
@@ -66,7 +66,6 @@ public class Home extends Activity
 			@Override
 			public void onDrawerOpened(View drawerView)
 			{
-				//super.onDrawerOpened(drawerView);
 				getActionBar().setTitle(drawerTitle);
 				invalidateOptionsMenu();
 			}
@@ -113,7 +112,7 @@ public class Home extends Activity
 	{
 		//If the nav drawer is open, hide action items related to the content view
 		boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-		menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
+		menu.findItem(R.id.action_add).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -186,13 +185,19 @@ public class Home extends Activity
 			int i = getArguments().getInt(DRAWER_ITEM_NUMBER);
 			String drawer_item_title = getResources().getStringArray(
 					R.array.Drawer_Item_List)[i];
+			
+			if(drawer_item_title.equalsIgnoreCase("Scanner") == true)
+			{
+				Intent intent = new Intent(getActivity(), BarcodeScanningApp.class);
+				getActivity().startActivity(intent);
+			}
 
-			int imageId = getResources().getIdentifier(
+			/*int imageId = getResources().getIdentifier(
 					drawer_item_title.toLowerCase(Locale.getDefault()),
 					"drawable", getActivity().getPackageName());
 			((ImageView) rootView.findViewById(R.id.image))
 					.setImageResource(imageId);
-			getActivity().setTitle(drawer_item_title);
+			getActivity().setTitle(drawer_item_title);*/
 			return rootView;
 		}
 	}
