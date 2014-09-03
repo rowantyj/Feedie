@@ -8,4 +8,26 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_add">Add</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    
+    <string-array name="titles">
+        <item>Thread 1</item>
+        <item>Thread 2</item>
+        <item>Thread 3</item>
+        <item>Thread 4</item>
+        <item>Thread 5</item>
+        <item>Thread 6</item>
+        <item>Thread 7</item>
+        <item>Thread 8</item>
+        <item>Thread 9</item>
+        <item>Thread 10</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
 </resources>

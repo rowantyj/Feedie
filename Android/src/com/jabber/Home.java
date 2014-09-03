@@ -1,5 +1,7 @@
 package com.jabber;
 
+import com.jabber.topicline.TopicLineFragment;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
@@ -34,35 +36,35 @@ public class Home extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 
-		//AndroidManifest (android:label)
+		// AndroidManifest (android:label)
 		title = drawerTitle = getTitle();
-		
-		//(res/values/array.xml)
+
+		// (res/values/array.xml)
 		drawerItemTitles = getResources().getStringArray(
 				R.array.Drawer_Item_List);
-		
-		//(Root/Parent layout of Home Activity)
+
+		// (Root/Parent layout of Home Activity)
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		
+
 		drawerList = (ListView) findViewById(R.id.left_drawer);
 		drawerList.setAdapter(new ArrayAdapter<String>(this,
 				R.layout.drawer_list_item, drawerItemTitles));
 		drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-		//Top Left toggle
+		// Top Left toggle
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
-				R.string.drawer_close)
-		{
-			//Called when a drawer has settled in a completely closed state
+				R.string.drawer_close) {
+			// Called when a drawer has settled in a completely closed state
 			@Override
 			public void onDrawerClosed(View view)
 			{
 				getActionBar().setTitle(title);
-				invalidateOptionsMenu(); // creates call to onPrepareOptionMenu()
+				invalidateOptionsMenu(); // creates call to
+											// onPrepareOptionMenu()
 			}
 
-			//Called when a drawer has settled in a completely open state
+			// Called when a drawer has settled in a completely open state
 			@Override
 			public void onDrawerOpened(View drawerView)
 			{
@@ -75,8 +77,8 @@ public class Home extends Activity
 
 		if (savedInstanceState == null)
 		{
-            selectItem(0);
-        }
+			selectItem(0);
+		}
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
@@ -87,7 +89,7 @@ public class Home extends Activity
 	{
 		super.onPostCreate(savedInstanceState);
 
-		//Sync the toggle state after onRestoreInstanceState has occurred
+		// Sync the toggle state after onRestoreInstanceState has occurred
 		drawerToggle.syncState();
 	}
 
@@ -99,18 +101,19 @@ public class Home extends Activity
 	}
 
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu)
+	public boolean onCreateOptionsMenu(Menu menu)
 	{
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 
-	//Called whenever we call invalidateOptionMenu()
+	// Called whenever we call invalidateOptionMenu()
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu)
 	{
-		//If the nav drawer is open, hide action items related to the content view
+		// If the nav drawer is open, hide action items related to the content
+		// view
 		boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
 		menu.findItem(R.id.action_add).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
@@ -119,8 +122,9 @@ public class Home extends Activity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		//Pass the event to ActionBarDrawerToggle, if it returns true, then i has handled the app icon touch event
-		if(drawerToggle.onOptionsItemSelected(item))
+		// Pass the event to ActionBarDrawerToggle, if it returns true, then i
+		// has handled the app icon touch event
+		if (drawerToggle.onOptionsItemSelected(item))
 		{
 			return true;
 		}
@@ -143,15 +147,27 @@ public class Home extends Activity
 	private void selectItem(int position)
 	{
 		// Create a new fragment
-		Fragment fragment = new HomeFragment();
-		Bundle args = new Bundle();
-		args.putInt(HomeFragment.DRAWER_ITEM_NUMBER, position);
-		fragment.setArguments(args);
+		if (position == 0)
+		{
+			TopicLineFragment tpf = new TopicLineFragment();
 
-		// Insert the fragment by replacing any existing fragment
-		android.app.FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
+			// Insert the fragment by replacing any existing fragment
+			android.app.FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, tpf)
+					.commit();
+		}
+		else
+		{
+			Fragment fragment = new HomeFragment();
+			Bundle args = new Bundle();
+			args.putInt(HomeFragment.DRAWER_ITEM_NUMBER, position);
+			fragment.setArguments(args);
+
+			// Insert the fragment by replacing any existing fragment
+			android.app.FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.content_frame, fragment).commit();
+		}
 
 		// Highlight the selected item, update the title & close the drawer
 		drawerList.setItemChecked(position, true);
@@ -185,19 +201,19 @@ public class Home extends Activity
 			int i = getArguments().getInt(DRAWER_ITEM_NUMBER);
 			String drawer_item_title = getResources().getStringArray(
 					R.array.Drawer_Item_List)[i];
-			
-			if(drawer_item_title.equalsIgnoreCase("Scanner") == true)
+
+			if (drawer_item_title.equalsIgnoreCase("Scanner") == true)
 			{
-				Intent intent = new Intent(getActivity(), BarcodeScanningApp.class);
+				Intent intent = new Intent(getActivity(),
+						BarcodeScanningApp.class);
 				getActivity().startActivity(intent);
 			}
 
-			/*int imageId = getResources().getIdentifier(
-					drawer_item_title.toLowerCase(Locale.getDefault()),
-					"drawable", getActivity().getPackageName());
-			((ImageView) rootView.findViewById(R.id.image))
-					.setImageResource(imageId);
-			getActivity().setTitle(drawer_item_title);*/
+			/* int imageId = getResources().getIdentifier(
+			 * drawer_item_title.toLowerCase(Locale.getDefault()), "drawable",
+			 * getActivity().getPackageName()); ((ImageView)
+			 * rootView.findViewById(R.id.image)) .setImageResource(imageId);
+			 * getActivity().setTitle(drawer_item_title); */
 			return rootView;
 		}
 	}
