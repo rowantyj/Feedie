@@ -52,10 +52,10 @@ public class Register extends Activity implements OnClickListener
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	
 	//Jun's IP
-//	 private static final String LOGIN_URL = "http://192.168.0.4/jabber/register.php";  
+	 private static final String LOGIN_URL = "http://192.168.0.4/jabber/register.php";  
 	
 	//Rowan's IP
-	private static final String	LOGIN_URL		= "http://192.168.1.5/jabber/register.php";
+	//private static final String	LOGIN_URL		= "http://10.1.1.1/jabber/register.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =

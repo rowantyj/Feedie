@@ -21,20 +21,6 @@
         <item>Topic 9</item>
         <item>Topic 10</item>
     </string-array>
-    
-        <string-array name="desc">
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-        <item>Sample desc</item>
-
-    </string-array>
 
     <array name="indicator">
         <item>@drawable/indicator</item>
