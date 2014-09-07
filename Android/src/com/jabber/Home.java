@@ -77,7 +77,7 @@ public class Home extends Activity
 
 		if (savedInstanceState == null)
 		{
-			selectItem(0);
+			selectItem(1);
 		}
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);

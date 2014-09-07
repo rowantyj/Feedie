@@ -43,8 +43,8 @@ public class TopicLineFragment extends ListFragment implements OnItemClickListen
 
 		super.onActivityCreated(savedInstanceState);
 
-		menutitles = getResources().getStringArray(R.array.titles);
-		menuIcons = getResources().obtainTypedArray(R.array.icons);
+		menutitles = getResources().getStringArray(R.array.topics);
+		menuIcons = getResources().obtainTypedArray(R.array.indicator);
 
 		rowItems = new ArrayList<RowItem>();
 
