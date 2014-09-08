@@ -17,11 +17,12 @@ import com.jabber.R;
 public class TopicLineFragment extends ListFragment implements OnItemClickListener
 {
 
-	String[]				menutitles;
-	TypedArray				menuIcons;
+	String[]				titles;
+	String[]				desc;
+	int[]				iconsIndi;
 
-	CustomAdapter			adapter;
-	private List<RowItem>	rowItems;
+	TopicLineAdapter			adapter;
+	private ArrayList<Topic> topicList;
 
 	public TopicLineFragment()
 	{
@@ -43,20 +44,19 @@ public class TopicLineFragment extends ListFragment implements OnItemClickListen
 
 		super.onActivityCreated(savedInstanceState);
 
-		menutitles = getResources().getStringArray(R.array.topics);
-		menuIcons = getResources().obtainTypedArray(R.array.indicator);
+		titles = getResources().getStringArray(R.array.topics);
+		desc = getResources().getStringArray(R.array.desc);
+		iconsIndi = getResources().getIntArray(R.array.indicator); 
 
-		rowItems = new ArrayList<RowItem>();
+		topicList = new ArrayList<Topic>();
 
-		for (int i = 0; i < menutitles.length; i++)
+		for (int i = 0; i < titles.length; i++)
 		{
-			RowItem items = new RowItem(menutitles[i], menuIcons.getResourceId(
-					i, -1));
-
-			rowItems.add(items);
+			Topic topic = new Topic(titles[i], desc[i], iconsIndi[i], "Test");
+			topicList.add(topic);
 		}
 
-		adapter = new CustomAdapter(getActivity(), rowItems);
+		adapter = new TopicLineAdapter(getActivity(), topicList);
 		setListAdapter(adapter);
 		getListView().setOnItemClickListener(this);
 
@@ -67,7 +67,7 @@ public class TopicLineFragment extends ListFragment implements OnItemClickListen
 			long id)
 	{
 
-		Toast.makeText(getActivity(), menutitles[position], Toast.LENGTH_SHORT)
+		Toast.makeText(getActivity(), titles[position], Toast.LENGTH_SHORT)
 				.show();
 
 	}
