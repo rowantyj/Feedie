@@ -1,10 +1,9 @@
 package com.jabber.topicline;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.ListFragment;
-import android.content.res.TypedArray;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +13,16 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import com.jabber.R;
 
-public class TopicLineFragment extends ListFragment implements OnItemClickListener
+public class TopicLineFragment extends ListFragment implements
+		OnItemClickListener
 {
 
-	String[]				titles;
-	String[]				desc;
-	int[]				iconsIndi;
+	String[]					titles;
+	String[]					desc;
+	int[]						iconsIndi;
 
 	TopicLineAdapter			adapter;
-	private ArrayList<Topic> topicList;
+	private ArrayList<Topic>	topicList;
 
 	public TopicLineFragment()
 	{
@@ -46,7 +46,7 @@ public class TopicLineFragment extends ListFragment implements OnItemClickListen
 
 		titles = getResources().getStringArray(R.array.topics);
 		desc = getResources().getStringArray(R.array.desc);
-		iconsIndi = getResources().getIntArray(R.array.indicator); 
+		iconsIndi = getResources().getIntArray(R.array.indicator);
 
 		topicList = new ArrayList<Topic>();
 
