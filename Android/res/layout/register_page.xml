@@ -116,6 +116,12 @@
             android:text="Terms and Conditions" />
     </ScrollView>
 
+    <CheckBox
+    	android:id="@+id/checkBox1"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="By ticking this, you agree with our terms and conditions" />
+
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"

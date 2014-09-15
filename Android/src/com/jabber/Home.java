@@ -29,6 +29,15 @@ public class Home extends Activity
 	private CharSequence			drawerTitle;
 	private CharSequence			title;
 	private ActionBarDrawerToggle	drawerToggle;
+	private final static int TOPICLINE = 0;
+	private final static int EXPLORE = 1;
+	private final static int MORE = 2;
+	private final static int SCANNER = 3;
+	private final static int EDIT_PROFILE = 4;
+	private final static int PRIVACY_POLICY = 5;
+	private final static int TERMS_OF_SERVICE = 6;
+	private final static int ABOUT_US = 7;
+	private final static int REPORT_PROBLEM = 8;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -147,7 +156,7 @@ public class Home extends Activity
 	private void selectItem(int position)
 	{
 		// Create a new fragment
-		if (position == 0)
+		if (position == TOPICLINE)
 		{
 			TopicLineFragment tpf = new TopicLineFragment();
 

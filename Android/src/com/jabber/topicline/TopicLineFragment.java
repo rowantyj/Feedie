@@ -67,8 +67,9 @@ public class TopicLineFragment extends ListFragment implements
 			long id)
 	{
 
-		Toast.makeText(getActivity(), titles[position], Toast.LENGTH_SHORT)
+		Toast.makeText(getActivity(), titles[position] + " marked as read", Toast.LENGTH_SHORT)
 				.show();
+		view.setAlpha((float) 0.5); // grey out the topic
 
 	}
 
