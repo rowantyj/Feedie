@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Untitled Gantt Project" company="" webLink="http://" view-date="2014-09-29" view-index="0" gantt-divider-location="338" resource-divider-location="300" version="2.0" locale="en_GB">
+<project name="Untitled Gantt Project" company="" webLink="http://" view-date="2014-09-27" view-index="0" gantt-divider-location="338" resource-divider-location="300" version="2.0" locale="en_GB">
     <description/>
-    <view zooming-state="default:5" id="gantt-chart">
+    <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Name" width="56" order="0"/>
         <field id="tpd4" name="Begin date" width="21" order="1"/>
         <field id="tpd5" name="End date" width="21" order="2"/>
@@ -40,20 +40,20 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="2" name="Executing" meeting="false" start="2014-09-30" duration="33" complete="1" expand="true">
-            <task id="6" name="Register" meeting="false" start="2014-09-30" duration="1" complete="50" expand="true">
+        <task id="2" name="Executing" meeting="false" start="2014-09-29" duration="21" complete="0" expand="true">
+            <task id="6" name="Register" meeting="false" start="2014-09-29" duration="2" complete="0" expand="true">
                 <depend id="7" type="2" difference="0" hardness="Strong"/>
-                <task id="14" name="JSON Scripting" meeting="false" start="2014-09-30" duration="1" complete="100" expand="true"/>
-                <task id="30" name="Minor Fix" color="#8cb6ce" meeting="false" start="2014-09-30" duration="1" complete="0" expand="true"/>
+                <task id="14" name="JSON Scripting" meeting="false" start="2014-09-29" duration="2" complete="0" expand="true"/>
+                <task id="30" name="Minor Fix" meeting="false" start="2014-09-29" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="7" name="Home" meeting="false" start="2014-10-01" duration="8" complete="14" expand="true">
+            <task id="7" name="Home" meeting="false" start="2014-10-01" duration="4" complete="0" expand="true">
                 <depend id="9" type="2" difference="0" hardness="Strong"/>
                 <depend id="26" type="1" difference="0" hardness="Strong"/>
-                <task id="16" name="JSON Scripting" meeting="false" start="2014-10-01" duration="3" complete="0" expand="true">
+                <task id="16" name="JSON Scripting" meeting="false" start="2014-10-01" duration="2" complete="0" expand="true">
                     <depend id="15" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="15" name="Retrieve Topics" meeting="false" start="2014-10-06" duration="5" complete="0" expand="true"/>
-                <task id="39" name="View Switching" meeting="false" start="2014-10-01" duration="2" complete="70" expand="true"/>
+                <task id="15" name="Retrieve Topics" meeting="false" start="2014-10-03" duration="2" complete="0" expand="true"/>
+                <task id="39" name="View Switching" meeting="false" start="2014-10-01" duration="1" complete="0" expand="true"/>
             </task>
             <task id="26" name="Settings" color="#000000" meeting="false" start="2014-10-01" duration="3" complete="0" expand="true">
                 <depend id="8" type="2" difference="0" hardness="Strong"/>
@@ -62,66 +62,60 @@
                 </task>
                 <task id="40" name="Save Settings" meeting="false" start="2014-10-03" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="8" name="TopicDetail" color="#000000" meeting="false" start="2014-10-06" duration="7" complete="0" expand="true">
+            <task id="8" name="TopicDetail" color="#000000" meeting="false" start="2014-10-06" duration="6" complete="0" expand="true">
                 <depend id="10" type="2" difference="0" hardness="Strong"/>
                 <task id="17" name="UI Design" meeting="false" start="2014-10-06" duration="1" complete="0" expand="true">
                     <depend id="18" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="18" name="Implementation" meeting="false" start="2014-10-07" duration="3" complete="0" expand="true">
+                <task id="18" name="Implementation" meeting="false" start="2014-10-07" duration="2" complete="0" expand="true">
                     <depend id="45" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="45" name="JSON Scripting" meeting="false" start="2014-10-10" duration="2" complete="2" expand="true">
+                <task id="45" name="JSON Scripting" meeting="false" start="2014-10-09" duration="2" complete="2" expand="true">
                     <depend id="33" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="33" name="Retrieve Label" meeting="false" start="2014-10-14" duration="1" complete="0" expand="true"/>
+                <task id="33" name="Retrieve Label" meeting="false" start="2014-10-13" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="10" name="CreateTopic" meeting="false" start="2014-10-15" duration="13" complete="0" expand="true">
+            <task id="10" name="CreateTopic" meeting="false" start="2014-10-14" duration="6" complete="0" expand="true">
                 <depend id="12" type="2" difference="0" hardness="Strong"/>
-                <task id="19" name="UI Design" meeting="false" start="2014-10-15" duration="1" complete="0" expand="true">
+                <task id="19" name="UI Design" meeting="false" start="2014-10-14" duration="1" complete="0" expand="true">
                     <depend id="20" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="20" name="Function Implementation" meeting="false" start="2014-10-16" duration="4" complete="0" expand="true">
+                <task id="20" name="Function Implementation" meeting="false" start="2014-10-15" duration="2" complete="0" expand="true">
                     <depend id="55" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="55" name="JSON Scripting" meeting="false" start="2014-10-22" duration="4" complete="0" expand="true">
+                <task id="55" name="JSON Scripting" meeting="false" start="2014-10-17" duration="2" complete="0" expand="true">
                     <depend id="21" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="21" name="Save topics" meeting="false" start="2014-10-28" duration="4" complete="0" expand="true"/>
+                <task id="21" name="Save topics" meeting="false" start="2014-10-21" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="9" name="BrowseTopic" meeting="false" start="2014-10-13" duration="15" complete="0" expand="true">
-                <task id="23" name="UI Design" meeting="false" start="2014-10-13" duration="1" complete="0" expand="true">
+            <task id="9" name="BrowseTopic" meeting="false" start="2014-10-07" duration="6" complete="0" expand="true">
+                <task id="23" name="UI Design" meeting="false" start="2014-10-07" duration="1" complete="0" expand="true">
                     <depend id="24" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="24" name="Implementation" meeting="false" start="2014-10-14" duration="6" complete="0" expand="true">
+                <task id="24" name="Implementation" meeting="false" start="2014-10-08" duration="3" complete="0" expand="true">
                     <depend id="22" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="22" name="JSON Scripting" meeting="false" start="2014-10-22" duration="4" complete="0" expand="true">
+                <task id="22" name="JSON Scripting" meeting="false" start="2014-10-13" duration="1" complete="0" expand="true">
                     <depend id="11" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="11" name="Search Function" meeting="false" start="2014-10-28" duration="4" complete="0" expand="true"/>
+                <task id="11" name="Search Function" meeting="false" start="2014-10-14" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="12" name="Comment Function" meeting="false" start="2014-11-03" duration="9" complete="0" expand="true">
-                <task id="27" name="Retrieve Comments" meeting="false" start="2014-11-03" duration="4" complete="0" expand="true">
+            <task id="12" name="Comment Function" meeting="false" start="2014-10-22" duration="4" complete="0" expand="true">
+                <task id="27" name="Retrieve Comments" meeting="false" start="2014-10-22" duration="2" complete="0" expand="true">
                     <depend id="29" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="29" name="Post Comments" meeting="false" start="2014-11-07" duration="2" complete="0" expand="true">
-                    <depend id="99" type="2" difference="0" hardness="Strong"/>
-                </task>
-                <task id="99" name="Comment Integrity Check" meeting="false" start="2014-11-11" duration="3" complete="0" expand="true"/>
+                <task id="29" name="Post Comments" meeting="false" start="2014-10-24" duration="2" complete="0" expand="true"/>
             </task>
-            <task id="34" name="Server Implementation" meeting="false" start="2014-09-30" duration="26" complete="0" expand="true">
-                <task id="35" name="Database Design" meeting="false" start="2014-09-30" duration="4" complete="0" expand="true">
+            <task id="34" name="Server Implementation" meeting="false" start="2014-09-29" duration="15" complete="0" expand="true">
+                <task id="35" name="Database Design" meeting="false" start="2014-09-29" duration="5" complete="0" expand="true">
                     <depend id="37" type="2" difference="0" hardness="Strong"/>
                     <depend id="38" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="37" name="Password hashing" meeting="false" start="2014-10-06" duration="5" complete="0" expand="true"/>
-                <task id="38" name="Server Triggers" meeting="false" start="2014-10-06" duration="7" complete="0" expand="true">
+                <task id="37" name="Password hashing" meeting="false" start="2014-10-06" duration="3" complete="0" expand="true"/>
+                <task id="38" name="Server Triggers" meeting="false" start="2014-10-06" duration="5" complete="0" expand="true">
                     <depend id="43" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="43" name="Server Procedure" meeting="false" start="2014-10-15" duration="5" complete="0" expand="true">
-                    <depend id="77" type="2" difference="0" hardness="Strong"/>
-                </task>
-                <task id="77" name="Server Security" meeting="false" start="2014-10-22" duration="10" complete="0" expand="true"/>
+                <task id="43" name="Server Procedure" meeting="false" start="2014-10-13" duration="5" complete="0" expand="true"/>
             </task>
         </task>
     </tasks>
@@ -141,9 +135,9 @@
         <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="180" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="69" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="68" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="189" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="72" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="71" visible="true"/>
     </taskdisplaycolumns>
     <previous/>
     <roles roleset-name="Default"/>
