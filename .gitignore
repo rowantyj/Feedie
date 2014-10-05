@@ -38,3 +38,11 @@ build/
 *.ipr
 *~
 *.swp
+*.ipr
+*.iml
+*.iws
+*.properties
+
+*.bat
+
+*.gradle
