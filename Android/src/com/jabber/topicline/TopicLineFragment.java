@@ -2,6 +2,9 @@ package com.jabber.topicline;
 
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +71,10 @@ public class TopicLineFragment extends ListFragment implements
         ImageView indicator = (ImageView) view.findViewById(R.id.indicatorIV);
         indicator.setImageResource(R.drawable.indicator_red);
         view.setAlpha((float) 0.5); // grey out the topic
+
+        TopicDetailFragment tdf = new TopicDetailFragment();
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
 
     }
 

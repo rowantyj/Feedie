@@ -2,7 +2,6 @@ package com.jabber.topicline;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
 /**
  * Created by rowantan on 10/6/14.
