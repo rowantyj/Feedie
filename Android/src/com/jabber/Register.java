@@ -386,7 +386,6 @@ public class Register extends Activity implements OnClickListener
 		@Override
 		protected String doInBackground(String... args)
 			{
-			// TODO Auto-generated method stub
 			// Check for success tag
 			int success;
 			String username = usernameET.getText().toString();

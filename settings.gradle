@@ -1,2 +1,2 @@
-include ':Android'
+include ':Android', 'AnimationLibrary'
 include ':droidparts-develop:droidparts'

@@ -1,49 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources >
 
-	<string name="app_name">Jabber</string>
-	<string name="action_settings">Settings</string>
-	<string name="drawer_open">Open navigation drawer</string>
-	<string name="drawer_close">Close navigation drawer</string>
-	<string name="action_add">Add</string>
-	<string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="app_name" >Jabber</string >
+    <string name="action_settings" >Settings</string >
+    <string name="drawer_open" >Open navigation drawer</string >
+    <string name="drawer_close" >Close navigation drawer</string >
+    <string name="action_add" >Add</string >
+    <string name="app_not_available" >Sorry, there\'s no web browser available</string >
 
-	<string-array name="topics">
-		<item>Topic 1</item>
-		<item>Topic 2</item>
-		<item>Topic 3</item>
-		<item>Topic 4</item>
-		<item>Topic 5</item>
-		<item>Topic 6</item>
-		<item>Topic 7</item>
-		<item>Topic 8</item>
-		<item>Topic 9</item>
-		<item>Topic 10</item>
-	</string-array>
-	<string-array name="desc">
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-		<item>Sample descriptions</item>
-	</string-array>
+    <string-array name="topics" >
+        <item >Topic 1</item >
+        <item >Topic 2</item >
+        <item >Topic 3</item >
+        <item >Topic 4</item >
+        <item >Topic 5</item >
+        <item >Topic 6</item >
+        <item >Topic 7</item >
+        <item >Topic 8</item >
+        <item >Topic 9</item >
+        <item >Topic 10</item >
+    </string-array >
+    <string-array name="desc" >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+        <item >Sample descriptions</item >
+    </string-array >
 
-	<array name="indicator">
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-		<item>@drawable/indicator</item>
-	</array>
+    <array name="indicator" >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+        <item >@drawable/indicator</item >
+    </array >
 
-</resources>
+    <string name="dummy_paragraph" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit
+        amet nisi dolor. Vivamus et urna euismod, tristique velit euismod, ultrices libero. Interdum
+        et malesuada fames ac ante ipsum primis in faucibus. In hac habitasse platea dictumst. Donec
+        a interdum augue, vel vulputate magna. Donec a ultricies purus. Suspendisse eleifend risus
+        non vulputate suscipit. Sed ullamcorper quis libero vitae faucibus. Etiam facilisis congue
+        tortor ac facilisis. Sed egestas mauris vitae ligula suscipit feugiat. Vestibulum ac tellus
+        vitae lacus commodo pharetra vel eu turpis. Aliquam erat volutpat. Sed ac ornare ex.
+        Maecenas tristique massa at sapien blandit faucibus.
+    </string >
+
+</resources >
