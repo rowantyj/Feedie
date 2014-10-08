@@ -1,10 +1,9 @@
 package com.jabber.topicline;
 
+import java.util.ArrayList;
+
 import android.app.ListFragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jabber.R;
-
-import java.util.ArrayList;
 
 public class TopicLineFragment extends ListFragment implements
         OnItemClickListener {
@@ -74,7 +71,7 @@ public class TopicLineFragment extends ListFragment implements
 
         TopicDetailFragment tdf = new TopicDetailFragment();
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 
     }
 
