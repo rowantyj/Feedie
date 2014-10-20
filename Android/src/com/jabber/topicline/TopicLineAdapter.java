@@ -1,15 +1,16 @@
 package com.jabber.topicline;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jabber.R;
-
-import java.util.ArrayList;
 
 public class TopicLineAdapter extends ArrayAdapter<Topic> {
 
@@ -17,6 +18,7 @@ public class TopicLineAdapter extends ArrayAdapter<Topic> {
     private final ArrayList<Topic> topicList;
     private TextView title;
     private TextView desc;
+    private ImageView indicator;
 
     public TopicLineAdapter(Context context, ArrayList<Topic> topicList) {
         super(context, R.layout.custom_topicline_list, topicList);
@@ -35,10 +37,24 @@ public class TopicLineAdapter extends ArrayAdapter<Topic> {
                 false);
         title = (TextView) rowView.findViewById(R.id.titleTV);
         desc = (TextView) rowView.findViewById(R.id.descTV);
+        indicator = (ImageView) rowView.findViewById(R.id.indicatorIV);
 
         // Setting Values...
         title.setText(topicList.get(position).getTitle());
         desc.setText(topicList.get(position).getDesc());
+        
+        if(topicList.get(position).getIndicator().equalsIgnoreCase("red"))
+        {
+        	indicator.setImageResource(R.drawable.indicator_red);
+        }
+        else if(topicList.get(position).getIndicator().equalsIgnoreCase("yellow"))
+        {
+        	indicator.setImageResource(R.drawable.indicator_yellow);
+        }
+        else if(topicList.get(position).getIndicator().equalsIgnoreCase("green"))
+        {
+        	indicator.setImageResource(R.drawable.indicator_green);
+        }
 
         return rowView;
 
