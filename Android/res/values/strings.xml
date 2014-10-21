@@ -90,16 +90,10 @@ Jabber has the right to modify the privacy policy from time to time. Hence, Jabb
     </string-array >
 
     <array name="indicator" >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
-        <item >@drawable/indicator</item >
+        <item >@drawable/indicator_red</item >
+        <item >@drawable/indicator_yellow</item >
+        <item >@drawable/indicator_green</item >
+
     </array >
 
     <string name="dummy_paragraph" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit

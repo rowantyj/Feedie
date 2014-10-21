@@ -86,10 +86,14 @@ public class Home extends Activity
 
 		drawerLayout.setDrawerListener(drawerToggle);
 
-		if (savedInstanceState == null)
+		/*if (savedInstanceState == null)
 		{
-			selectItem(1);
+			//selectItem(1);
 		}
+		else
+		{
+			//selectItem();
+		}*/
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
