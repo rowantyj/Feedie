@@ -66,12 +66,15 @@ public class TopicLineFragment extends ListFragment implements
                 .show();
         //goes into TopicDetailView
         ImageView indicator = (ImageView) view.findViewById(R.id.indicatorIV);
-        indicator.setImageResource(R.drawable.indicator_red);
+        indicator.setImageResource(R.drawable.indicator_red); //set icon into red
         view.setAlpha((float) 0.5); // grey out the topic
 
         TopicDetailFragment tdf = new TopicDetailFragment();
 
         android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+        //Ask Home Fragment to handle view switching to detailed-view topic
+
 
     }
 
