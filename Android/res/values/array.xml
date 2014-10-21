@@ -5,13 +5,13 @@
         <item>Topic-line</item>
         <item>Explore</item>
         <item>More</item>
-        <item>Scanner</item>
+     <!--     <item>Scanner</item>
         <item>Edit Profile</item>
         <item>Privacy Policy</item>
         <item>Terms of Service</item>
         <item >About US</item>
         <item >Log Out</item>
-        <item >Report a problem</item>
+        <item >Report a problem</item>-->
     </string-array>
 
 </resources>

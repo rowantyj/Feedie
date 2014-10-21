@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="text" >
 
         <requestFocus />
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <org.droidparts.widget.ClearableEditText
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Confirm Password"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword" />
 
     <org.droidparts.widget.ClearableEditText
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" >
 
         <requestFocus />
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="@string/fullname"
         android:inputType="textCapSentences|textPersonName" />
 
     <org.droidparts.widget.ClearableEditText
@@ -56,11 +56,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Country"
+        android:hint="@string/country"
         android:inputType="textCapSentences|textAutoCorrect" />
 
     <RadioGroup
-        android:id="@+id/radioSex"
+        android:id="@+id/radioGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="onRadioButtonClicked"
-            android:text="Male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/radioFemale"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:onClick="onRadioButtonClicked"
-            android:text="Female" />
+            android:text="@string/female" />
     </RadioGroup>
 
     <LinearLayout
@@ -113,19 +113,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Terms and Conditions" />
+            android:text="@string/terms_and_conditions" />
     </ScrollView>
 
     <CheckBox
     	android:id="@+id/checkBox1"
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:text="By ticking this, you agree with our terms and conditions" />
+    	android:text="@string/TC_description" />
 
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:text="@string/sign_up" />
 
 </LinearLayout>

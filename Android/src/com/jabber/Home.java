@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.jabber.topicline.MoreFragment;
 import com.jabber.topicline.TopicLineFragment;
 
 
@@ -169,6 +170,14 @@ public class Home extends Activity
 			// Insert the fragment by replacing any existing fragment
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, tpf)
+					.commit();
+		}
+		else if(position == MORE)
+		{
+			MoreFragment moreFragment = new MoreFragment();
+			
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, moreFragment)
 					.commit();
 		}
 		else
