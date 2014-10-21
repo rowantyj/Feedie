@@ -21,7 +21,7 @@ public class TopicLineFragment extends ListFragment implements
 
 	String[]					titles;
 	String[]					desc;
-	String[]					iconsIndi;
+	String[]						iconsIndi;
 
 	TopicLineAdapter			adapter;
 	private ArrayList<Topic>	topicList;
@@ -54,14 +54,12 @@ public class TopicLineFragment extends ListFragment implements
 		{
 			topicList = new ArrayList<Topic>();
 			Toast.makeText(getActivity(), "NEW", Toast.LENGTH_SHORT).show();
-
+			
 			for (int i = 0; i < titles.length; i++)
 			{
-				Topic topic = new Topic(titles[i], desc[i], iconsIndi[2]
-						.toString().substring(
-								iconsIndi[2].toString().indexOf("green"),
-								iconsIndi[2].toString().indexOf("green")
-										+ "green".length()), "Test");
+				Topic topic = new Topic(titles[i], desc[i], 
+						iconsIndi[2].toString().substring(iconsIndi[2].toString().indexOf("green"),iconsIndi[2].toString().indexOf("green")+"green".length())
+						, "Test");
 				topicList.add(topic);
 			}
 		}
@@ -71,6 +69,7 @@ public class TopicLineFragment extends ListFragment implements
 			Toast.makeText(getActivity(), "OLD", Toast.LENGTH_SHORT).show();
 		}
 
+		
 		adapter = new TopicLineAdapter(getActivity(), topicList);
 		setListAdapter(adapter);
 		getListView().setOnItemClickListener(this);
