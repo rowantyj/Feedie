@@ -3,6 +3,7 @@ package com.jabber.topicline;
 import java.util.ArrayList;
 
 import android.app.ListFragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jabber.R;
@@ -87,6 +89,8 @@ public class TopicLineFragment extends ListFragment implements
 		indicator.setImageResource(R.drawable.indicator_red);
 		topicList.get(position).setIndicator("red");
 		view.setAlpha((float) 0.5); // grey out the topic
+		TextView title = (TextView) view.findViewById(R.id.titleTV);
+		title.setTypeface(null, Typeface.NORMAL);
 
 		TopicDetailFragment tdf = new TopicDetailFragment();
 

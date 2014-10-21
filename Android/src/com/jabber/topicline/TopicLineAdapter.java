@@ -3,6 +3,7 @@ package com.jabber.topicline;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class TopicLineAdapter extends ArrayAdapter<Topic> {
         if(topicList.get(position).getIndicator().equalsIgnoreCase("red"))
         {
         	indicator.setImageResource(R.drawable.indicator_red);
+        	title.setTypeface(null, Typeface.NORMAL);
         }
         else if(topicList.get(position).getIndicator().equalsIgnoreCase("yellow"))
         {
@@ -54,6 +56,7 @@ public class TopicLineAdapter extends ArrayAdapter<Topic> {
         else if(topicList.get(position).getIndicator().equalsIgnoreCase("green"))
         {
         	indicator.setImageResource(R.drawable.indicator_green);
+        	title.setTypeface(null, Typeface.BOLD);
         }
 
         return rowView;
