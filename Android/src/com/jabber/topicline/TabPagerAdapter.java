@@ -29,7 +29,7 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
             case COMMENT_TAB:
                 //CALL COMMENT TAB FRAGMENT INTO VIEW
 
-                return new CommentFragment();
+               // return new CommentFragment();
         }
 
 
