@@ -7,6 +7,25 @@
     <string name="drawer_close" >Close navigation drawer</string >
     <string name="action_add" >Add</string >
     <string name="app_not_available" >Sorry, there\'s no web browser available</string >
+    
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="fullname">Full Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="TC_description">By ticking this, you agree with our terms and conditions</string>
+    <string name="sign_up">Sign Up</string>
+    
+    <string name="edit_profile">Edit Profile</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="about_us">About us</string>
+    <string name="log_out">Log Out</string>
+    <string name="report_a_problem">Report a problem</string>
 
     <string-array name="topics" >
         <item >Topic 1</item >
