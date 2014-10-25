@@ -1,12 +1,13 @@
 package com.jabber;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,7 +23,7 @@ import com.jabber.topicline.MoreFragment;
 import com.jabber.topicline.TopicLineFragment;
 
 
-public class Home extends Activity
+public class Home extends FragmentActivity
 {
 
 	private String[]				drawerItemTitles;
@@ -168,7 +169,7 @@ public class Home extends Activity
 			TopicLineFragment tpf = new TopicLineFragment();
 
 			// Insert the fragment by replacing any existing fragment
-			FragmentManager fragmentManager = getFragmentManager();
+			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, tpf)
 					.commit();
 		}
@@ -176,7 +177,7 @@ public class Home extends Activity
 		{
 			MoreFragment moreFragment = new MoreFragment();
 			
-			FragmentManager fragmentManager = getFragmentManager();
+			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, moreFragment)
 					.commit();
 		}
@@ -189,7 +190,7 @@ public class Home extends Activity
 
 			// Insert the fragment by replacing any existing fragment
 
-            FragmentManager fragmentManager = getFragmentManager();
+			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragment)
                     .commit();
 		}

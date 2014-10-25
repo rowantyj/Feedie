@@ -3,19 +3,19 @@ package com.jabber.topicline;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.jabber.R;
-
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
+
+import com.jabber.R;
 
 public class EditProfileFragment extends Fragment
 {
