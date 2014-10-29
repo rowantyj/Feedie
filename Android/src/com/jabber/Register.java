@@ -39,7 +39,7 @@ public class Register extends Activity implements OnClickListener
 
 	private String				dayStr, monthStr, yearStr;
 	private String				gender;
-	private Spinner				spinYear, spinMonth, spinDay;
+	private Spinner				countrySpinner, spinYear, spinMonth, spinDay;
 
 	JSONParser					jsonParser	= new JSONParser();
 	int							dayIndex;
@@ -74,7 +74,7 @@ public class Register extends Activity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.register_page);
+		setContentView(R.layout.register);
 
 		dayIndex = 0;
 
@@ -90,7 +90,7 @@ public class Register extends Activity implements OnClickListener
 		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) findViewById(R.id.emailET);
 		nameET = (EditText) findViewById(R.id.nameET);
-		countryET = (EditText) findViewById(R.id.countryET);
+		countrySpinner = (Spinner) findViewById(R.id.countrySpinner);
 		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
 
 		maleRB = (RadioButton) findViewById(R.id.radioMale);
@@ -385,7 +385,7 @@ public class Register extends Activity implements OnClickListener
 			String name = nameET.getText().toString();
 			// Gender is already at the top
 			String date_of_birth = yearStr + "-" + monthStr + "-" + dayStr;
-			String country = countryET.getText().toString();
+			String country = countrySpinner.getSelectedItem().toString();
 
 			try
 			{
