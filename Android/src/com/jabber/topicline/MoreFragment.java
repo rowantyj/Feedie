@@ -1,6 +1,5 @@
 package com.jabber.topicline;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,7 +26,7 @@ public class MoreFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		View rootView = inflater.inflate(R.layout.fragment_more, null, false);
+		View rootView = inflater.inflate(R.layout.fragment_more, container, false);
 
 		editProfileBtn = (Button) rootView.findViewById(R.id.edit_profile_btn);
 		privacyPolicyBtn = (Button) rootView
@@ -36,9 +35,9 @@ public class MoreFragment extends Fragment
 		aboutUSBtn = (Button) rootView.findViewById(R.id.about_us_btn);
 		logOutBtn = (Button) rootView.findViewById(R.id.logout_btn);
 		reportBtn = (Button) rootView.findViewById(R.id.report_btn);
-		
+
 		final FragmentManager fragmentManager = getFragmentManager();
-		
+
 		editProfileBtn.setOnClickListener(new OnClickListener()
 		{
 
@@ -46,24 +45,41 @@ public class MoreFragment extends Fragment
 			public void onClick(View v)
 			{
 				EditProfileFragment fragment = new EditProfileFragment();
-				
+
 				fragmentManager.beginTransaction()
 						.replace(R.id.content_frame, fragment).commit();
 			}
 		});
 
+		privacyPolicyBtn.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				PrivacyPolicyFragment fragment = new PrivacyPolicyFragment();
+
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
+			}
+
+		});
+
+		termsBtn.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				TermsFragment fragment = new TermsFragment();
+
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
+
+			}
+		});
+
 		return rootView;
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-
-		
-
-		
-
 	}
 
 }

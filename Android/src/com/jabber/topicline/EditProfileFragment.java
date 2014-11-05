@@ -31,22 +31,23 @@ public class EditProfileFragment extends Fragment
 
 	public EditProfileFragment()
 	{
-		
+
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		//populateDOBSpinner();
+		// populateDOBSpinner();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		View rootView = inflater.inflate(R.layout.edit_profile, null, false);
+		View rootView = inflater.inflate(R.layout.fragment_edit_profile, container,
+				false);
 
 		passwordET = (EditText) rootView.findViewById(R.id.passwordET);
 		confirmPassET = (EditText) rootView
