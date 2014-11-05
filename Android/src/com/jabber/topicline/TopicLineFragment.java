@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,10 +85,8 @@ public class TopicLineFragment extends ListFragment implements
         TextView title = (TextView) view.findViewById(R.id.titleTV);
         title.setTypeface(null, Typeface.NORMAL);
 
-        Fragment tdf = new TopicDetailFragment();
-        
-        FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.content_frame, tdf).commit();
+        TopicDetailFragment tdf = new TopicDetailFragment();
+
 
 
     }

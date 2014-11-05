@@ -26,7 +26,7 @@ public class EditProfileFragment extends Fragment
 	private RadioButton	maleRB, femaleRB;
 
 	private String		dayStr, monthStr, yearStr;
-	private Spinner		countrySpinner, spinYear, spinMonth, spinDay;
+	private Spinner		spinYear, spinMonth, spinDay;
 	int					dayIndex;
 
 	public EditProfileFragment()
@@ -52,8 +52,8 @@ public class EditProfileFragment extends Fragment
 		confirmPassET = (EditText) rootView
 				.findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) rootView.findViewById(R.id.emailET);
-		fullNameET = (EditText) rootView.findViewById(R.id.usernameET);
-		countrySpinner = (Spinner) rootView.findViewById(R.id.countrySpinner);
+		fullNameET = (EditText) rootView.findViewById(R.id.fullNameET);
+		countryET = (EditText) rootView.findViewById(R.id.countryET);
 		confirmPassET = (EditText) rootView
 				.findViewById(R.id.confirmPasswordET);
 
@@ -290,6 +290,4 @@ public class EditProfileFragment extends Fragment
 		});
 	}
 
-	
-	
 }

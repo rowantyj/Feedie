@@ -1,2 +1,2 @@
-include ':Android', 'AnimationLibrary', ':droidparts'
-project(':droidparts').projectDir = new File('droidparts-develop/droidparts')
+include ':Android', 'AnimationLibrary'
+include ':droidparts-develop:droidparts'

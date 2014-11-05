@@ -46,13 +46,3 @@ build/
 *.bat
 
 *.gradle
-
-*.properties
-
-Android/.classpath
-
-Android/.classpath
-
-*.properties
-
-Android/project.properties
