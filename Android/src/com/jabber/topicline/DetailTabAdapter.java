@@ -1,16 +1,15 @@
 package com.jabber.topicline;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jabber.R;
-
-import org.droidparts.adapter.widget.ArrayAdapter;
-
-import java.util.List;
 
 /**
  * Created by rowantan on 10/19/14.
@@ -19,9 +18,9 @@ public class DetailTabAdapter extends ArrayAdapter<String>{
 
 
     private final Context ctx;
-    private final List<String> list;
+    private final int list;
 
-    public DetailTabAdapter(Context ctx, List<String> list) {
+    public DetailTabAdapter(Context ctx, int list) {
         super(ctx, list);
         this.ctx = ctx;
         this.list = list;
@@ -45,7 +44,7 @@ public class DetailTabAdapter extends ArrayAdapter<String>{
 
 
         //get detail content from PHP-JSON script
-        String detailText = list.toString();
+        String detailText = list + "";
         detail.setText(detailText);
 
 

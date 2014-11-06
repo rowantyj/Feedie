@@ -1,59 +1,41 @@
 package com.jabber.topicline;
 
-<<<<<<< HEAD
-import com.jabber.R;
-
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-=======
 import android.support.v4.app.FragmentActivity;
->>>>>>> FETCH_HEAD
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.jabber.R;
 
 /**
  * Created by rowantan on 10/6/14.
  */
 public class TopicDetailFragment extends FragmentActivity {
 
-    private ViewPager viewPager;
-    private TabPagerAdapter mAdapter;
+	private ViewPager viewPager;
+	private TabPagerAdapter mAdapter;
 
-    public TopicDetailFragment() {
+	public TopicDetailFragment() {
 
+	}
 
-    }
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+	}
 
-<<<<<<< HEAD
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState)
-			{
-			View rootView = inflater.inflate(R.layout.topic_detail_view, null, false);
-
-      return rootView;
-			}
-
-		@Override
-		public void onActivityCreated(Bundle savedInstanceState)
-			{
-			super.onActivityCreated(savedInstanceState);
-			
-			mAdapter = new TabPagerAdapter(getFragmentManager() );
-			
-			
-			
-			
-			
-			
-			}
+	@Override
+	public View onCreateView(String name, Context context, AttributeSet attrs) {
+		// TODO Auto-generated method stub
+		return super.onCreateView(name, context, attrs);
 		
-		
+	}
 
-    
-=======
->>>>>>> FETCH_HEAD
+
 
 }
-

@@ -34,7 +34,6 @@ public class AboutDetailFragment extends Fragment
 
 		// DetailTabAdapter mAdapter = new DetailTabAdapter();
 
-<<<<<<< HEAD
         //DetailTabAdapter mAdapter = new DetailTabAdapter(getActivity(), null);
 
 
@@ -42,8 +41,5 @@ public class AboutDetailFragment extends Fragment
 
 
     }
-=======
-	}
->>>>>>> FETCH_HEAD
 
 }
