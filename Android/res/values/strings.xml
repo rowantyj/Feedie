@@ -19,7 +19,6 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="TC_description">By ticking this, you agree with our terms and conditions</string>
     <string name="sign_up">Sign Up</string>
-    <string name="save_changes">Save Changes</string>
     
     <string name="edit_profile">Edit Profile</string>
     <string name="privacy_policy">Privacy Policy</string>
@@ -27,7 +26,7 @@
     <string name="about_us">About us</string>
     <string name="log_out">Log Out</string>
     <string name="report_a_problem">Report a problem</string>
-    <string name="privacy_policy_desc" >Privacy Policy
+    <string name="privacy_policy_desc" >"Privacy Policy
 (Effective date: xx May 2015)
 
 Welcome to Jabber! Jabber provides you with an opened and quick feedback platform where you can give or/and view feedback while remaining anonymous. Despite the anonymity, we prompt and urge users to embrace the cultural within the Feedie society, to be respectful to all and responsible for one’s own words. However,  Feedie’s administration team can still trace any user’s track and activities to ensure the abiding of the rules. Any defamation or verbal abusage reported will be put into investigation and be treated seriously. Feedie is obliged to assist in any legal investigation regarding users’ feedback by handling personal information of the parties involved to the legal parties to facilitate legal works.
@@ -52,8 +51,6 @@ Through collection of your information, we may:
 	•	Measure traffics and analyze users’ tendencies.
 	•	Contact you via email regarding to bug report and diagnosis.
 
-
-
 PROTECTION OF YOUR INFORMATION
 
 Under usual circumstances, Jabber is liable to conceal and protect users’ personal information included users’ email, password, name, etc. Jabber will not rent, share or sell users’ personal information to third parties outside Jabber. Nevertheless, Jabber will share and/or use users’ information under one circumstance: Jabber would be using users’ information only after partly or exclusively removing any identifiable parts of users’ info and combining them with the rest of anonymized data.
@@ -74,10 +71,9 @@ THIRD PARTIES WEBSITE
 
 Jabber will not take responsibility for any actions or any unofficial posted-ads on other websites that is linked directly or indirectly to Jabber. Our privacy policy applies only to Jabber apps but not any third parties website. In the case of discovering any frauds or counterfeits, please do not hesitate to contact us immediately.
 
-
 CHANGES TO OUR PRIVACY POLICY
 
-Jabber has the right to modify the privacy policy from time to time. Hence, Jabber would like to advise users to check the privacy policy regularly. Jabber would expect users entitling to modified privacy policy without informing users on purpose.
+Jabber has the right to modify the privacy policy from time to time. Hence, Jabber would like to advise users to check the privacy policy regularly. Jabber would expect users entitling to modified privacy policy without informing users on purpose."
 
 
 </string >

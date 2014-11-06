@@ -1,20 +1,21 @@
 package com.jabber.topicline;
 
+<<<<<<< HEAD
 import com.jabber.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+=======
+import android.support.v4.app.FragmentActivity;
+>>>>>>> FETCH_HEAD
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 
 /**
  * Created by rowantan on 10/6/14.
  */
-public class TopicDetailFragment extends Fragment {
+public class TopicDetailFragment extends FragmentActivity {
 
     private ViewPager viewPager;
     private TabPagerAdapter mAdapter;
@@ -24,6 +25,7 @@ public class TopicDetailFragment extends Fragment {
 
     }
 
+<<<<<<< HEAD
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
@@ -50,6 +52,8 @@ public class TopicDetailFragment extends Fragment {
 		
 
     
+=======
+>>>>>>> FETCH_HEAD
 
 }
 
