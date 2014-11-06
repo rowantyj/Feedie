@@ -4,6 +4,7 @@ import com.jabber.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ public class TopicDetailFragment extends Fragment {
 			{
 			super.onActivityCreated(savedInstanceState);
 			
+			mAdapter = new TabPagerAdapter(getFragmentManager() );
 			
 			
 			

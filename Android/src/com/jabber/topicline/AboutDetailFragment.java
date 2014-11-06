@@ -29,7 +29,7 @@ public class AboutDetailFragment extends Fragment {
 
         //dedicate adapter to take over loading
 
-        //DetailTabAdapter mAdapter = new DetailTabAdapter();
+        //DetailTabAdapter mAdapter = new DetailTabAdapter(getActivity(), null);
 
 
 
