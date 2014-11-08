@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.fragments;
 
 import java.util.ArrayList;
 
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jabber.R;
+import com.jabber.adapters.TopicLineAdapter;
+import com.jabber.models.Topic;
 
 public class TopicLineFragment extends ListFragment implements
 

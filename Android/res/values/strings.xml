@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources >
+<resources>
 
-    <string name="app_name" >Jabber</string >
-    <string name="action_settings" >Settings</string >
-    <string name="drawer_open" >Open navigation drawer</string >
-    <string name="drawer_close" >Close navigation drawer</string >
-    <string name="action_add" >Add</string >
-    <string name="app_not_available" >Sorry, there\'s no web browser available</string >
-    
+    <string name="app_name">Jabber</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_add">Add</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
@@ -19,14 +18,14 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="TC_description">By ticking this, you agree with our terms and conditions</string>
     <string name="sign_up">Sign Up</string>
-    
     <string name="edit_profile">Edit Profile</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_of_service">Terms of Service</string>
     <string name="about_us">About us</string>
     <string name="log_out">Log Out</string>
     <string name="report_a_problem">Report a problem</string>
-    <string name="privacy_policy_desc" >"Privacy Policy
+    <string name="confirm">Confirm</string>
+    <string name="privacy_policy_desc">"Privacy Policy
 (Effective date: xx May 2015)
 
 Welcome to Jabber! Jabber provides you with an opened and quick feedback platform where you can give or/and view feedback while remaining anonymous. Despite the anonymity, we prompt and urge users to embrace the cultural within the Feedie society, to be respectful to all and responsible for one’s own words. However,  Feedie’s administration team can still trace any user’s track and activities to ensure the abiding of the rules. Any defamation or verbal abusage reported will be put into investigation and be treated seriously. Feedie is obliged to assist in any legal investigation regarding users’ feedback by handling personal information of the parties involved to the legal parties to facilitate legal works.
@@ -73,52 +72,47 @@ Jabber will not take responsibility for any actions or any unofficial posted-ads
 
 CHANGES TO OUR PRIVACY POLICY
 
-Jabber has the right to modify the privacy policy from time to time. Hence, Jabber would like to advise users to check the privacy policy regularly. Jabber would expect users entitling to modified privacy policy without informing users on purpose."
+Jabber has the right to modify the privacy policy from time to time. Hence, Jabber would like to advise users to check the privacy policy regularly. Jabber would expect users entitling to modified privacy policy without informing users on purpose."</string>
 
+    <string-array name="topics">
+        <item>Topic 1</item>
+        <item>Topic 2</item>
+        <item>Topic 3</item>
+        <item>Topic 4</item>
+        <item>Topic 5</item>
+        <item>Topic 6</item>
+        <item>Topic 7</item>
+        <item>Topic 8</item>
+        <item>Topic 9</item>
+        <item>Topic 10</item>
+    </string-array>
+    <string-array name="desc">
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+        <item>Sample descriptions</item>
+    </string-array>
 
-</string >
+    <array name="indicator">
+        <item>@drawable/indicator_red</item>
+        <item>@drawable/indicator_yellow</item>
+        <item>@drawable/indicator_green</item>
+    </array>
 
-
-    <string-array name="topics" >
-        <item >Topic 1</item >
-        <item >Topic 2</item >
-        <item >Topic 3</item >
-        <item >Topic 4</item >
-        <item >Topic 5</item >
-        <item >Topic 6</item >
-        <item >Topic 7</item >
-        <item >Topic 8</item >
-        <item >Topic 9</item >
-        <item >Topic 10</item >
-    </string-array >
-    <string-array name="desc" >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-        <item >Sample descriptions</item >
-    </string-array >
-
-    <array name="indicator" >
-        <item >@drawable/indicator_red</item >
-        <item >@drawable/indicator_yellow</item >
-        <item >@drawable/indicator_green</item >
-
-    </array >
-
-    <string name="dummy_paragraph" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit
+    <string name="dummy_paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit
         amet nisi dolor. Vivamus et urna euismod, tristique velit euismod, ultrices libero. Interdum
         et malesuada fames ac ante ipsum primis in faucibus. In hac habitasse platea dictumst. Donec
         a interdum augue, vel vulputate magna. Donec a ultricies purus. Suspendisse eleifend risus
         non vulputate suscipit. Sed ullamcorper quis libero vitae faucibus. Etiam facilisis congue
         tortor ac facilisis. Sed egestas mauris vitae ligula suscipit feugiat. Vestibulum ac tellus
         vitae lacus commodo pharetra vel eu turpis. Aliquam erat volutpat. Sed ac ornare ex.
-        Maecenas tristique massa at sapien blandit faucibus.
-    </string >
+        Maecenas tristique massa at sapien blandit faucibus.</string>
+    
 
-</resources >
+</resources>

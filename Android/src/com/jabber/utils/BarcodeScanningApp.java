@@ -1,4 +1,4 @@
-package com.jabber;
+package com.jabber.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.jabber.R;
+import com.jabber.R.id;
+import com.jabber.R.layout;
 
 public class BarcodeScanningApp extends Activity implements OnClickListener {
     private Button scanBtn;

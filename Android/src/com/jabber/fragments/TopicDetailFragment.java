@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jabber.R;
+import com.jabber.adapters.TabPagerAdapter;
 
 /**
  * Created by rowantan on 10/6/14.

@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.jabber.R;
+import com.jabber.adapters.TermsFragment;
 
 public class MoreFragment extends Fragment
 {

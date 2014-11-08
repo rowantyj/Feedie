@@ -1,4 +1,7 @@
-package com.jabber.topicline;
+package com.jabber.adapters;
+
+import com.jabber.fragments.AboutDetailFragment;
+import com.jabber.fragments.CommentFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

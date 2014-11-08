@@ -1,4 +1,4 @@
-package com.google.zxing.integration.android;
+package com.jabber.utils;
 
 public final class IntentResult {
 

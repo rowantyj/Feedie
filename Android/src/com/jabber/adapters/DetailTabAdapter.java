@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.adapters;
 
 import java.util.List;
 

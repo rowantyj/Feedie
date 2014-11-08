@@ -17,8 +17,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.jabber.topicline.MoreFragment;
-import com.jabber.topicline.TopicLineFragment;
+import com.jabber.fragments.MoreFragment;
+import com.jabber.fragments.TopicLineFragment;
+import com.jabber.utils.BarcodeScanningApp;
 
 
 public class Home extends FragmentActivity
@@ -162,36 +163,30 @@ public class Home extends FragmentActivity
 	private void selectItem(int position)
 	{
 		// Create a new fragment
+		Fragment fragment = new HomeFragment();
+		
+		
 		if (position == TOPICLINE)
 		{
-			TopicLineFragment tpf = new TopicLineFragment();
-
-			// Insert the fragment by replacing any existing fragment
-			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, tpf)
-					.commit();
+			fragment= new TopicLineFragment();
 		}
 		else if(position == MORE)
 		{
-			MoreFragment moreFragment = new MoreFragment();
-			
-			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, moreFragment)
-					.commit();
+			 fragment = new MoreFragment();
 		}
 		else
 		{
-			Fragment fragment = new HomeFragment();
+			fragment = new HomeFragment();
 			Bundle args = new Bundle();
 			args.putInt(HomeFragment.DRAWER_ITEM_NUMBER, position);
 			fragment.setArguments(args);
 
-			// Insert the fragment by replacing any existing fragment
-
-			android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment)
-                    .commit();
 		}
+		
+		// Insert the fragment by replacing any existing fragment
+		android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment)
+                .commit();
 
 		// Highlight the selected item, update the title & close the drawer
 		drawerList.setItemChecked(position, true);

@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

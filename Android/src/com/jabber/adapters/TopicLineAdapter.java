@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.adapters;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jabber.R;
+import com.jabber.models.Topic;
 
 public class TopicLineAdapter extends ArrayAdapter<Topic> {
 

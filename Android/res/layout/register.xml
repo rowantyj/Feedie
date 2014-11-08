@@ -42,38 +42,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Old Password"
+                android:text="Password"
                 android:id="@+id/textView2" />
 
         <org.droidparts.widget.ClearableEditText
-                android:id="@+id/oldPasswordET"
+                android:id="@+id/passwordET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
-
-    </TableRow >
-    
-     <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_column="0" >
-
-        <TextView
-            android:id="@+id/textView02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Password"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <org.droidparts.widget.ClearableEditText
-            android:id="@+id/newPasswordET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="New Password"
-            android:inputType="textPassword" />
 
     </TableRow >
 
@@ -232,10 +210,23 @@
 
     <View style="@style/ListDivider" />
 
-    <Button
-            android:id="@+id/confirmBtn"
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/terms_and_conditions" />
+
+
+    <CheckBox
+            android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm" />
+            android:text="@string/TC_description" />
+
+    <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up" />
 
 </TableLayout >

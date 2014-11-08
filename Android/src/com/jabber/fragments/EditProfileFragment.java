@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.fragments;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,47 +17,39 @@ import android.widget.Spinner;
 
 import com.jabber.R;
 
-public class EditProfileFragment extends Fragment
-{
+public class EditProfileFragment extends Fragment {
 
-	private EditText	passwordET, confirmPassET, emailET, fullNameET,
-			countryET;
+	private EditText oldpasswordET,newPassET, confirmPassET, emailET, fullNameET, countryET;
 
-	private RadioButton	maleRB, femaleRB;
+	private RadioButton maleRB, femaleRB;
 
-	private String		dayStr, monthStr, yearStr;
-	private Spinner		spinYear, spinMonth, spinDay;
-	int					dayIndex;
+	private String dayStr, monthStr, yearStr;
+	private Spinner spinYear, spinMonth, spinDay;
+	int dayIndex;
 
-	public EditProfileFragment()
-	{
+	public EditProfileFragment() {
 
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		// populateDOBSpinner();
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState)
-	{
-		View rootView = inflater.inflate(R.layout.fragment_edit_profile, container,
-				false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_edit_profile, container, false);
 
-		passwordET = (EditText) rootView.findViewById(R.id.passwordET);
-		confirmPassET = (EditText) rootView
-				.findViewById(R.id.confirmPasswordET);
+		oldpasswordET = (EditText) rootView.findViewById(R.id.oldPasswordET);
+		newPassET = (EditText) rootView.findViewById(R.id.newPasswordET);
+		confirmPassET = (EditText) rootView.findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) rootView.findViewById(R.id.emailET);
-		fullNameET = (EditText) rootView.findViewById(R.id.fullNameET);
+		fullNameET = (EditText) rootView.findViewById(R.id.nameET);
 		countryET = (EditText) rootView.findViewById(R.id.countryET);
-		confirmPassET = (EditText) rootView
-				.findViewById(R.id.confirmPasswordET);
-
+		
+		
 		maleRB = (RadioButton) rootView.findViewById(R.id.radioMale);
 		femaleRB = (RadioButton) rootView.findViewById(R.id.radioFemale);
 		maleRB.setChecked(true);
@@ -69,38 +61,33 @@ public class EditProfileFragment extends Fragment
 		return rootView;
 	}
 
-	void populateDOBSpinner()
-	{
+	void populateDOBSpinner() {
 		// Populate year Spinner
 		ArrayList<String> years = new ArrayList<String>();
 
 		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 
-		for (int i = 1900; i <= thisYear; i++)
-		{
+		for (int i = 1900; i <= thisYear; i++) {
 			years.add(Integer.toString(i));
 		}
 
-		ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(
-				this.getActivity(), android.R.layout.simple_spinner_item, years);
+		ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this.getActivity(),
+				android.R.layout.simple_spinner_item, years);
 
 		spinYear.setAdapter(yearAdapter);
 
 		// Populate month Spinner
 		ArrayList<String> months = new ArrayList<String>();
 
-		String monthArray[] = { "January", "February", "March", "April", "May",
-				"June", "July", "August", "September", "October", "November",
-				"December" };
+		String monthArray[] = { "January", "February", "March", "April", "May", "June", "July",
+				"August", "September", "October", "November", "December" };
 
-		for (int i = 0; i < 12; i++)
-		{
+		for (int i = 0; i < 12; i++) {
 			months.add(monthArray[i]);
 		}
 
-		ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(
-				this.getActivity(), android.R.layout.simple_spinner_item,
-				months);
+		ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this.getActivity(),
+				android.R.layout.simple_spinner_item, months);
 
 		spinMonth.setAdapter(monthAdapter);
 
@@ -108,23 +95,17 @@ public class EditProfileFragment extends Fragment
 		final ArrayList<String> days = new ArrayList<String>();
 
 		// If Months is changed
-		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener()
-		{
+		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
-			{
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				days.clear();
 				// Months with 31 days
-				if (position == 0 || position == 2 || position == 4
-						|| position == 8 || position == 9 || position == 11)
-				{
-					for (int i = 1; i < 32; i++)
-					{
+				if (position == 0 || position == 2 || position == 4 || position == 8
+						|| position == 9 || position == 11) {
+					for (int i = 1; i < 32; i++) {
 						days.add(Integer.toString(i));
 
-						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-								getActivity(),
+						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(getActivity(),
 								android.R.layout.simple_spinner_item, days);
 
 						spinDay.setAdapter(dayAdapter);
@@ -136,15 +117,12 @@ public class EditProfileFragment extends Fragment
 
 				{
 					// Leap Year
-					if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0)
-					{
-						for (int i = 1; i < 30; i++)
-						{
+					if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0) {
+						for (int i = 1; i < 30; i++) {
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									getActivity(),
-									android.R.layout.simple_spinner_item, days);
+									getActivity(), android.R.layout.simple_spinner_item, days);
 
 							spinDay.setAdapter(dayAdapter);
 
@@ -155,15 +133,12 @@ public class EditProfileFragment extends Fragment
 						}
 					}
 					// Not Leap Year
-					else
-					{
-						for (int i = 1; i < 29; i++)
-						{
+					else {
+						for (int i = 1; i < 29; i++) {
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									getActivity(),
-									android.R.layout.simple_spinner_item, days);
+									getActivity(), android.R.layout.simple_spinner_item, days);
 
 							spinDay.setAdapter(dayAdapter);
 
@@ -175,14 +150,11 @@ public class EditProfileFragment extends Fragment
 					}
 				}
 				// Months with 30 days
-				else
-				{
-					for (int i = 1; i < 31; i++)
-					{
+				else {
+					for (int i = 1; i < 31; i++) {
 						days.add(Integer.toString(i));
 
-						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-								getActivity(),
+						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(getActivity(),
 								android.R.layout.simple_spinner_item, days);
 
 						spinDay.setAdapter(dayAdapter);
@@ -199,35 +171,26 @@ public class EditProfileFragment extends Fragment
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent)
-			{
+			public void onNothingSelected(AdapterView<?> parent) {
 			}
 
 		});
 
 		// If Year is changed
-		spinYear.setOnItemSelectedListener(new OnItemSelectedListener()
-		{
+		spinYear.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
-			{
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				// Leap Year
-				if (Integer.parseInt(spinYear.getItemAtPosition(position)
-						.toString()) % 4 == 0)
-				{
+				if (Integer.parseInt(spinYear.getItemAtPosition(position).toString()) % 4 == 0) {
 					// February
-					if (spinMonth.getSelectedItemPosition() == 1)
-					{
+					if (spinMonth.getSelectedItemPosition() == 1) {
 						days.clear();
-						for (int i = 1; i < 30; i++)
-						{
+						for (int i = 1; i < 30; i++) {
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									getActivity(),
-									android.R.layout.simple_spinner_item, days);
+									getActivity(), android.R.layout.simple_spinner_item, days);
 
 							spinDay.setAdapter(dayAdapter);
 
@@ -239,19 +202,15 @@ public class EditProfileFragment extends Fragment
 					}
 				}
 				// Not Leap Year
-				else
-				{
+				else {
 					// February
-					if (spinMonth.getSelectedItemPosition() == 1)
-					{
+					if (spinMonth.getSelectedItemPosition() == 1) {
 						days.clear();
-						for (int i = 1; i < 29; i++)
-						{
+						for (int i = 1; i < 29; i++) {
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
-									getActivity(),
-									android.R.layout.simple_spinner_item, days);
+									getActivity(), android.R.layout.simple_spinner_item, days);
 
 							spinDay.setAdapter(dayAdapter);
 
@@ -268,25 +227,20 @@ public class EditProfileFragment extends Fragment
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent)
-			{
+			public void onNothingSelected(AdapterView<?> parent) {
 			}
 
 		});
-		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
-		{
+		spinDay.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id)
-			{
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				dayIndex = position;
 				dayStr = position + 1 + "";
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> arg0)
-			{
+			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
 	}

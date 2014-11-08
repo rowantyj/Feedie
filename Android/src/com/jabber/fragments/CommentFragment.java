@@ -1,4 +1,4 @@
-package com.jabber.topicline;
+package com.jabber.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,18 +11,25 @@ import com.jabber.R;
 /**
  * Created by rowantan on 10/6/14.
  */
-public class AboutDetailFragment extends Fragment
+public class CommentFragment extends Fragment implements View.OnClickListener
 {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
 
-		View rootView = inflater.inflate(R.layout.fragment_detail_tab,
+		View rootView = inflater.inflate(R.layout.fragment_comment_tab,
 				container, false);
 
 		return rootView;
+
 	}
 
 	@Override
@@ -30,16 +37,12 @@ public class AboutDetailFragment extends Fragment
 	{
 		super.onActivityCreated(savedInstanceState);
 
-		// dedicate adapter to take over loading
+	}
 
-		// DetailTabAdapter mAdapter = new DetailTabAdapter();
+	@Override
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
 
-        //DetailTabAdapter mAdapter = new DetailTabAdapter(getActivity(), null);
-
-
-
-
-
-    }
-
+	}
 }

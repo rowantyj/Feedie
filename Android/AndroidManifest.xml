@@ -56,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BarcodeScanningApp"
+            android:name="com.jabber.utils.BarcodeScanningApp"
             android:configChanges="orientation"
             android:label="Barcode Scanner" >
         </activity>
