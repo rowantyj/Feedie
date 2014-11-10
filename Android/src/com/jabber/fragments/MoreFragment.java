@@ -12,7 +12,7 @@ import android.widget.Button;
 import com.jabber.R;
 import com.jabber.adapters.TermsFragment;
 
-public class MoreFragment extends Fragment
+public class MoreFragment extends Fragment implements OnClickListener
 {
 
 	Button	editProfileBtn, privacyPolicyBtn, termsBtn, aboutUSBtn, logOutBtn,
@@ -27,7 +27,8 @@ public class MoreFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		View rootView = inflater.inflate(R.layout.fragment_more, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_more, container,
+				false);
 
 		editProfileBtn = (Button) rootView.findViewById(R.id.edit_profile_btn);
 		privacyPolicyBtn = (Button) rootView
@@ -80,7 +81,41 @@ public class MoreFragment extends Fragment
 			}
 		});
 
+		aboutUSBtn.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				AboutUsFragment fragment = new AboutUsFragment();
+
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
+			}
+		});
+
+		reportBtn.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				ReportFragment fragment = new ReportFragment();
+
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
+			}
+		});
+
 		return rootView;
+	}
+
+	@Override
+	public void onClick(View v)
+	{
+		/*
+		 * switch(v.getId()) { case R.id. }
+		 */
 	}
 
 }
