@@ -143,11 +143,20 @@
             android:text="Nationality"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Spinner
+        <!--
+             <Spinner
             android:id="@+id/countrySpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/countries_list" />
+        -->
+
+        <AutoCompleteTextView
+            android:id="@+id/countryAutoTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Country"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </TableRow>
 
     <TableRow
@@ -171,16 +180,12 @@
                 android:id="@+id/radioMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="onRadioButtonClicked"
                 android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/radioFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="false"
-                android:onClick="onRadioButtonClicked"
                 android:text="@string/female" />
         </RadioGroup>
     </TableRow>

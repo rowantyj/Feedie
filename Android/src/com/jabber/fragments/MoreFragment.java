@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.jabber.R;
-import com.jabber.adapters.TermsFragment;
 
 public class MoreFragment extends Fragment implements OnClickListener
 {

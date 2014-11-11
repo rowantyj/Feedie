@@ -3,6 +3,7 @@ package com.jabber.fragments;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import android.R.raw;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,20 +12,25 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 
 import com.jabber.R;
 
-public class EditProfileFragment extends Fragment {
+public class EditProfileFragment extends Fragment implements OnCheckedChangeListener {
 
-	private EditText oldpasswordET,newPassET, confirmPassET, emailET, fullNameET, countryET;
-
+	private EditText oldpasswordET, newPassET, confirmPassET, emailET, fullNameET, countryET;
+	private AutoCompleteTextView countryAutoTV;
 	private RadioButton maleRB, femaleRB;
+	private RadioGroup rg;
+	private Spinner spinYear, spinMonth, spinDay, spinCountry;
 
 	private String dayStr, monthStr, yearStr;
-	private Spinner spinYear, spinMonth, spinDay;
 	int dayIndex;
 
 	public EditProfileFragment() {
@@ -35,7 +41,7 @@ public class EditProfileFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		// populateDOBSpinner();
+
 	}
 
 	@Override
@@ -47,19 +53,42 @@ public class EditProfileFragment extends Fragment {
 		confirmPassET = (EditText) rootView.findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) rootView.findViewById(R.id.emailET);
 		fullNameET = (EditText) rootView.findViewById(R.id.nameET);
-		countryET = (EditText) rootView.findViewById(R.id.countryET);
 		
 		
+
 		maleRB = (RadioButton) rootView.findViewById(R.id.radioMale);
 		femaleRB = (RadioButton) rootView.findViewById(R.id.radioFemale);
-		maleRB.setChecked(true);
-		femaleRB.setChecked(false);
+		rg = (RadioGroup) rootView.findViewById(R.id.radioGender);
+
 		spinYear = (Spinner) rootView.findViewById(R.id.yearSpinner);
 		spinMonth = (Spinner) rootView.findViewById(R.id.monthSpinner);
 		spinDay = (Spinner) rootView.findViewById(R.id.daySpinner);
+//		spinCountry = (Spinner) rootView.findViewById(R.id.countrySpinner);
 
+		rg.setOnCheckedChangeListener(this);
+
+
+		
 		return rootView;
 	}
+
+
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		
+		switch (checkedId) {
+		case R.id.radioMale:
+			//Do something here
+			break;
+		case R.id.radioFemale:
+			//Do something here
+			break;
+
+		}
+		
+	}
+
+	
 
 	void populateDOBSpinner() {
 		// Populate year Spinner
@@ -175,7 +204,6 @@ public class EditProfileFragment extends Fragment {
 			}
 
 		});
-
 		// If Year is changed
 		spinYear.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -228,6 +256,7 @@ public class EditProfileFragment extends Fragment {
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
+
 			}
 
 		});
@@ -244,5 +273,6 @@ public class EditProfileFragment extends Fragment {
 			}
 		});
 	}
+
 
 }

@@ -1,4 +1,4 @@
-package com.jabber.adapters;
+package com.jabber.fragments;
 
 import com.jabber.R;
 
