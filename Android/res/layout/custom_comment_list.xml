@@ -5,18 +5,12 @@
               android:padding="10dp"
               android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/comment_titleTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comment Title"
-            android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
             android:id="@+id/commentTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="25dp"
             android:text="Comment Content in here"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 

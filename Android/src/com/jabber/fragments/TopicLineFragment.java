@@ -2,6 +2,7 @@ package com.jabber.fragments;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -85,11 +86,12 @@ OnItemClickListener {
 		TextView title = (TextView) view.findViewById(R.id.titleTV);
 		title.setTypeface(null, Typeface.NORMAL);
 		
+		getActivity().startActivity(new Intent(getActivity(), TopicDetailFragment.class));
 		
 
-		Fragment tdf = new TopicDetailFragment();
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.content_frame, tdf).commit();
+//		Fragment tdf = new TopicDetailFragment();
+//		FragmentManager fragmentManager = getFragmentManager();
+//		fragmentManager.beginTransaction().replace(R.id.content_frame, tdf).commit();
 
 	}
 

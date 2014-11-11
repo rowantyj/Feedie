@@ -1,46 +1,82 @@
 package com.jabber.adapters;
 
-import com.jabber.fragments.AboutDetailFragment;
-import com.jabber.fragments.CommentFragment;
+import java.util.List;
 
+import com.jabber.fragments.AboutDetailFragment;
+
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 /**
  * Created by rowantan on 10/6/14.
  */
-public class TabPagerAdapter extends FragmentPagerAdapter {
+public class TabPagerAdapter extends FragmentStatePagerAdapter implements ActionBar.TabListener,
+		OnPageChangeListener {
 
-    private final int DETAIL_TAB = 0;
-    private final int COMMENT_TAB = 1;
+	private final int DETAIL_TAB = 0;
+	private final int COMMENT_TAB = 1;
 
+	// private final ActionBar mActionBar;
 
-    public TabPagerAdapter(FragmentManager fm) {
-        super(fm);
-    }
+	private List<Fragment> fList;
 
-    @Override
-    public Fragment getItem(int i) {
+	public TabPagerAdapter(FragmentManager fm, List<Fragment> fList) {
+		super(fm);
+		this.fList = fList;
 
-        switch (i) {
-            case DETAIL_TAB:
-                //CALL DETAIL FRAGMENT INTO VIEW
+	}
 
-                return new AboutDetailFragment();
+	@Override
+	public Fragment getItem(int i) {
+		
+		return fList.get(i);
+		
+		
+	}
 
-            case COMMENT_TAB:
-                //CALL COMMENT TAB FRAGMENT INTO VIEW
+	@Override
+	public int getCount() {
+		return 2;
+	}
 
-               return new CommentFragment();
-        }
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+		// TODO Auto-generated method stub
 
+	}
 
-        return null;
-    }
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// TODO Auto-generated method stub
 
-    @Override
-    public int getCount() {
-        return 2;
-    }
+	}
+
+	@Override
+	public void onPageSelected(int arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+
+	}
 }
