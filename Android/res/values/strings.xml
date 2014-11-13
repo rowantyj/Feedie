@@ -9,9 +9,11 @@
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="email">Email</string>
-    <string name="country">Country</string>
+    <string name="nationality">Nationality</string>
     <string name="fullname">Full Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
