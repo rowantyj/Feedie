@@ -15,8 +15,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 /**
  * Created by rowantan on 10/6/14.
  */
-public class TabPagerAdapter extends FragmentStatePagerAdapter implements ActionBar.TabListener,
-		OnPageChangeListener {
+public class TabPagerAdapter extends FragmentStatePagerAdapter implements OnPageChangeListener {
 
 	private final int DETAIL_TAB = 0;
 	private final int COMMENT_TAB = 1;
@@ -33,15 +32,25 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter implements Action
 
 	@Override
 	public Fragment getItem(int i) {
-		
+
 		return fList.get(i);
-		
-		
+
 	}
 
 	@Override
 	public int getCount() {
 		return 2;
+	}
+
+	@Override
+	public CharSequence getPageTitle(int position) {
+
+		if (position == DETAIL_TAB) {
+			return "Description";
+		} else {
+			return "Comments";
+		}
+
 	}
 
 	@Override
@@ -62,21 +71,4 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter implements Action
 
 	}
 
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
-	}
 }

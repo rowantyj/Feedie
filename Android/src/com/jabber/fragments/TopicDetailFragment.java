@@ -6,9 +6,8 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.jabber.R;
 import com.jabber.adapters.TabPagerAdapter;
@@ -19,8 +18,10 @@ import com.jabber.adapters.TabPagerAdapter;
 public class TopicDetailFragment extends FragmentActivity {
 
 	private ViewPager viewPager;
+	private PagerTabStrip mPagerTabStrip;
+//	private ActionBar mActionBar;
 	private TabPagerAdapter mAdapter;
-	
+
 	private List<Fragment> fList;
 
 	@Override
@@ -29,15 +30,16 @@ public class TopicDetailFragment extends FragmentActivity {
 
 		setContentView(R.layout.topic_detail_view);
 
+		 mPagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+		
 		fList = new ArrayList<Fragment>();
 		fList.add(new AboutDetailFragment());
 		fList.add(new CommentFragment());
 		mAdapter = new TabPagerAdapter(getSupportFragmentManager(), fList);
-
 		viewPager = (ViewPager) findViewById(R.id.pager);
+
 		viewPager.setAdapter(mAdapter);
 
 	}
+
 }
-
-

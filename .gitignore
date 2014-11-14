@@ -48,3 +48,7 @@ build/
 *.gradle
 
 *.properties
+
+*.properties
+
+Android/project.properties

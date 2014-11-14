@@ -11,6 +11,7 @@ import org.json.JSONObject;
 // import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -23,20 +24,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jabber.utils.Config;
 import com.jabber.utils.JSONParser;
 
-public class Login extends Activity implements OnClickListener
-{
+public class Login extends Activity implements OnClickListener {
 
-	Button						signUpBtn, signInBtn;
-	EditText					emailET, passwordET;
-	ProgressDialog				pDialog;
+	Button signUpBtn, signInBtn;
+	EditText emailET, passwordET;
+	ProgressDialog pDialog;
 
 	// JSON parser class
-	JSONParser					jsonParser			= new JSONParser();
+	JSONParser jsonParser = new JSONParser();
 
-	String						SHAREDPREFERENCES	= "SharedPreferences";
-	SharedPreferences			sharedPreferences;
+	// String SHAREDPREFERENCES = "SharedPreferences";
+	SharedPreferences sharedPreferences;
 
 	// php login script location:
 
@@ -46,10 +47,11 @@ public class Login extends Activity implements OnClickListener
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 
 	// Jun's IP
-//	private static final String	LOGIN_URL			= "http://192.168.0.4/jabber/login.php";
+	// private static final String LOGIN_URL =
+	// "http://192.168.0.4/jabber/login.php";
 
 	// Rowan's IP
-	 private static final String LOGIN_URL = "http://192.168.1.5/jabber/login.php";
+	private static final String LOGIN_URL = "http://192.168.1.5/jabber/login.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =
@@ -60,12 +62,11 @@ public class Login extends Activity implements OnClickListener
 	// "http://www.yourdomain.com/webservice/login.php";
 
 	// JSON element ids from response of php script:
-	private static final String	TAG_SUCCESS			= "success";
-	private static final String	TAG_MESSAGE			= "message";
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_page);
 
@@ -81,10 +82,9 @@ public class Login extends Activity implements OnClickListener
 		signInBtn.setOnClickListener(this);
 		signUpBtn.setOnClickListener(this);
 
-		sharedPreferences = getSharedPreferences(SHAREDPREFERENCES, 0);
+		sharedPreferences = getSharedPreferences(Config.SP_PATH, Context.MODE_PRIVATE);
 
-		if (sharedPreferences.getBoolean("login", false) == true)
-		{
+		if (sharedPreferences.getBoolean("login", false) == true) {
 			Intent i = new Intent(this, Home.class);
 			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			finish();
@@ -92,22 +92,18 @@ public class Login extends Activity implements OnClickListener
 		}
 	}
 
-	public void onClick(View v)
-	{
-		if (v.getId() == R.id.SUBtn)
-		{
+	public void onClick(View v) {
+		if (v.getId() == R.id.SUBtn) {
 			Intent i = new Intent(this, Register.class);
 			startActivity(i);
 		}
-		if (v.getId() == R.id.SIBtn)
-		{
+		if (v.getId() == R.id.SIBtn) {
 			new AttemptLogin().execute();
 		}
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
@@ -117,19 +113,17 @@ public class Login extends Activity implements OnClickListener
 	// AsyncTask is a separate thread than the thread that runs the GUI
 	// Any type of networking should be done with asynctask.
 
-	class AttemptLogin extends AsyncTask<String, String, String>
-	{
+	class AttemptLogin extends AsyncTask<String, String, String> {
 
 		// three methods get called, first preExecture, then do in background,
 		// and once do
 		// in back ground is completed, the onPost execute method will be
 		// called.
 
-		boolean	failure	= false;
+		boolean failure = false;
 
 		@Override
-		protected void onPreExecute()
-		{
+		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(Login.this);
 			pDialog.setMessage("Attempting login...");
@@ -139,15 +133,13 @@ public class Login extends Activity implements OnClickListener
 		}
 
 		@Override
-		protected String doInBackground(String... args)
-		{
+		protected String doInBackground(String... args) {
 
 			int status = 0;
 			String username = emailET.getText().toString();
 			String password = passwordET.getText().toString();
 
-			try
-			{
+			try {
 
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -156,10 +148,9 @@ public class Login extends Activity implements OnClickListener
 
 				Log.d("Request", "STARTING");
 				// Getting product details by making HTTP Request
-				JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST",
-						params);
-				
-				if(json == null)
+				JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST", params);
+
+				if (json == null)
 					return null;
 
 				// check your log for json response
@@ -168,25 +159,20 @@ public class Login extends Activity implements OnClickListener
 				// json success tag
 				status = json.getInt(TAG_SUCCESS);
 
-				if (status == 1)
-				{
+				if (status == 1) {
 					Log.d("Login Successful!", json.toString());
 					Intent i = new Intent(Login.this, Home.class);
 
-					sharedPreferences.edit().putBoolean("login", true).commit();
+					sharedPreferences.edit().putBoolean(Config.SP_LOGGED_IN, true).commit();
 					finish();
 					startActivity(i);
 					return json.getString(TAG_MESSAGE);
-				}
-				else if (status == 0)
-				{
+				} else if (status == 0) {
 					Log.d("Login Failure!", json.getString(TAG_MESSAGE));
 					return json.getString(TAG_MESSAGE);
 
 				}
-			}
-			catch (JSONException e)
-			{
+			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 
@@ -195,12 +181,10 @@ public class Login extends Activity implements OnClickListener
 		}
 
 		/** After completing background task Dismiss the progress dialog **/
-		protected void onPostExecute(String file_url)
-		{
+		protected void onPostExecute(String file_url) {
 			// dismiss the dialog once product deleted
 			pDialog.dismiss();
-			if (file_url != null)
-			{
+			if (file_url != null) {
 				Toast.makeText(Login.this, file_url, Toast.LENGTH_LONG).show();
 			}
 
