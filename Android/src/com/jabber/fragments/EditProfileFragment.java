@@ -32,7 +32,7 @@ public class EditProfileFragment extends Fragment implements
 		OnCheckedChangeListener, OnClickListener
 {
 
-	private EditText				oldpasswordET, newPassET, confirmPassET,
+	private EditText				oldPassET, newPassET, confirmPassET,
 			emailET, fullNameET, countryET;
 	private AutoCompleteTextView	countryAutoTV;
 	private RadioButton				maleRB, femaleRB;
@@ -61,8 +61,8 @@ public class EditProfileFragment extends Fragment implements
 		View rootView = inflater.inflate(R.layout.fragment_edit_profile,
 				container, false);
 
-		// oldpasswordET = (EditText) rootView.findViewById(R.id.oldPasswordET);
-		// newPassET = (EditText) rootView.findViewById(R.id.newPasswordET);
+		oldPassET = (EditText) rootView.findViewById(R.id.oldPasswordET);
+		newPassET = (EditText) rootView.findViewById(R.id.newPasswordET);
 		confirmPassET = (EditText) rootView
 				.findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) rootView.findViewById(R.id.emailET);
@@ -74,15 +74,15 @@ public class EditProfileFragment extends Fragment implements
 		femaleRB = (RadioButton) rootView.findViewById(R.id.radioFemale);
 		rg = (RadioGroup) rootView.findViewById(R.id.radioGender);
 
-		spinYear = (Spinner) rootView.findViewById(R.id.yearSpinner);
+		/*spinYear = (Spinner) rootView.findViewById(R.id.yearSpinner);
 		spinMonth = (Spinner) rootView.findViewById(R.id.monthSpinner);
-		spinDay = (Spinner) rootView.findViewById(R.id.daySpinner);
+		spinDay = (Spinner) rootView.findViewById(R.id.daySpinner);*/
 
-		passwordBtn = (Button) rootView.findViewById(R.id.passwordBtn);
+		passwordBtn = (Button) rootView.findViewById(R.id.dobBtn);
 		passwordBtn.setOnClickListener(this);
 
 		rg.setOnCheckedChangeListener(this);
-		populateDOBSpinner();
+		// populateDOBSpinner();
 		populateCountry();
 		return rootView;
 	}
@@ -118,7 +118,7 @@ public class EditProfileFragment extends Fragment implements
 			}
 		}
 		Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
-		
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				this.getActivity(),
 				android.R.layout.simple_dropdown_item_1line, countries);
@@ -351,21 +351,23 @@ public class EditProfileFragment extends Fragment implements
 	public void onClick(View v)
 	{
 		int id = v.getId();
-		if (id == R.id.passwordBtn)
+		if (id == R.id.dobBtn)
 		{
-			AlertDialog.Builder dialog = new AlertDialog.Builder(
-					getActivity());
-			dialog.setTitle("Change Your Password");
+			AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+			dialog.setTitle("Date of Birth");
 			LayoutInflater inflater = getActivity().getLayoutInflater();
-			View view = inflater.inflate(R.layout.change_password, null);
+			View view = inflater.inflate(R.layout.dob_dialog, null);
 			dialog.setView(view);
+			spinYear = (Spinner) view.findViewById(R.id.yearSpinner);
+			spinMonth = (Spinner) view.findViewById(R.id.monthSpinner);
+			spinDay = (Spinner) view.findViewById(R.id.daySpinner);
+			populateDOBSpinner();
 			dialog.setPositiveButton("Confirm Change",
 					new DialogInterface.OnClickListener()
 					{
 
 						@Override
-						public void onClick(DialogInterface dialog,
-								int which)
+						public void onClick(DialogInterface dialog, int which)
 						{
 							// TODO Auto-generated method stub
 
@@ -376,12 +378,11 @@ public class EditProfileFragment extends Fragment implements
 					{
 
 						@Override
-						public void onClick(DialogInterface dialog,
-								int which)
+						public void onClick(DialogInterface dialog, int which)
 						{
 						}
 					});
-			
+
 			dialog.create();
 			dialog.show();
 		}

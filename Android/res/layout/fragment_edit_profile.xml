@@ -65,25 +65,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <Spinner
-                android:id="@+id/daySpinner"
-                android:layout_width="wrap_content"
+            <org.droidparts.widget.ClearableEditText
+                android:id="@+id/oldPasswordET"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:ems="10"
+                android:hint="@string/old_password"
+                android:inputType="textPassword" />
 
-            <Spinner
-                android:id="@+id/monthSpinner"
-                android:layout_width="wrap_content"
+            <org.droidparts.widget.ClearableEditText
+                android:id="@+id/newPasswordET"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:ems="10"
+                android:hint="@string/new_password"
+                android:inputType="textPassword" />
 
-            <Spinner
-                android:id="@+id/yearSpinner"
-                android:layout_width="wrap_content"
+            <org.droidparts.widget.ClearableEditText
+                android:id="@+id/confirmPasswordET"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:ems="10"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <View style="@style/ListDivider" />
@@ -100,11 +107,11 @@
                 android:text="@string/confirm" />
 
             <Button
-                android:id="@+id/passwordBtn"
+                android:id="@+id/dobBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Change Password" />
+                android:text="Change Date of Birth" />
         </LinearLayout>
     </LinearLayout>
 
