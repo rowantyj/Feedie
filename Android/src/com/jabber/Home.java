@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.jabber.fragments.ExploreCatergoryFragment;
 import com.jabber.fragments.MoreFragment;
@@ -41,6 +42,8 @@ public class Home extends FragmentActivity {
 	private final static int TERMS_OF_SERVICE = 6;
 	private final static int ABOUT_US = 7;
 	private final static int REPORT_PROBLEM = 8;
+
+	private static long back_pressed;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,16 +94,28 @@ public class Home extends FragmentActivity {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-		
-		
-		//Set the first page to show
-		
+
+		// Set the first page to show
+
 		Fragment f = new ExploreCatergoryFragment();
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, f).commit();
+		fragmentManager.beginTransaction().replace(R.id.content_frame, f)
+				.commit();
 		setTitle("Explore");
-		
+
+	}
+
+	/*
+	 * Double back to confirm exit
+	 */
+	@Override
+	public void onBackPressed() {
+		if (back_pressed + 2000 > System.currentTimeMillis())
+			super.onBackPressed();
+		else
+			Toast.makeText(getBaseContext(), "Press once again to exit!",
+					Toast.LENGTH_SHORT).show();
+		back_pressed = System.currentTimeMillis();
 	}
 
 	@Override

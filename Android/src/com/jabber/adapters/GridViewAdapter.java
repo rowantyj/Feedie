@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.jabber.R;
 
-public class GVAdapter extends ArrayAdapter<String> {
+public class GridViewAdapter extends ArrayAdapter<String> {
 
 	private Context context;
 	private ArrayList<String> categoryList;
@@ -27,7 +27,7 @@ public class GVAdapter extends ArrayAdapter<String> {
 	private final List<Integer> colorList = Arrays.asList(Color.YELLOW, Color.CYAN, Color.GREEN, Color.GRAY, Color.RED, Color.MAGENTA);
 	private Button category_btn;
 
-	public GVAdapter(Context context, ArrayList<String> categoryList) {
+	public GridViewAdapter(Context context, ArrayList<String> categoryList) {
 		super(context, R.layout.childview_category, categoryList);
 		this.context = context;
 		this.categoryList = categoryList;

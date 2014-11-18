@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.jabber.R;
-import com.jabber.adapters.GVAdapter;
+import com.jabber.adapters.GridViewAdapter;
 
 public class ExploreCatergoryFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public class ExploreCatergoryFragment extends Fragment {
 		categoryList = new ArrayList<String>(Arrays.asList("People",
 				"Products", "Places", "Issues", "Services", "Test Dummy"));
 
-		GVAdapter mAdapter = new GVAdapter(getActivity(), categoryList);
+		GridViewAdapter mAdapter = new GridViewAdapter(getActivity(), categoryList);
 
 		categoryGV.setAdapter(mAdapter);
 
