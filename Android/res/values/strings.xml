@@ -31,6 +31,10 @@
     <string name="description">Description</string>
     <string name="report">Report</string>
     <string name="report_msg">"We are sorry that you encounter such problem.\nWe will attend to it ASAP."</string>
+    <string name="hint_search">Search topics</string>
+    
+    
+    
     <string name="privacy_policy_desc">"Privacy Policy
 (Effective date: xx May 2015)
 

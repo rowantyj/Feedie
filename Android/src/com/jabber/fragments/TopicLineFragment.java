@@ -29,7 +29,7 @@ OnItemClickListener {
 	String[] desc;
 	String[] iconsIndi;
 
-	TopicLineAdapter adapter;
+	TopicLineAdapter mAdapter;
 	private ArrayList<Topic> topicList;
 
 	public TopicLineFragment() {
@@ -38,7 +38,7 @@ OnItemClickListener {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.list_fragment, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_topicline_list, container, false);
 
 		return rootView;
 	}
@@ -67,8 +67,8 @@ OnItemClickListener {
 			Toast.makeText(getActivity(), "OLD", Toast.LENGTH_SHORT).show();
 		}
 
-		adapter = new TopicLineAdapter(getActivity(), topicList);
-		setListAdapter(adapter);
+		mAdapter = new TopicLineAdapter(getActivity(), topicList);
+		setListAdapter(mAdapter);
 		getListView().setOnItemClickListener(this);
 
 	}

@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="Drawer_Item_List">
-        <item>Topic-line</item>
+        <item>My Topics</item>
         <item>Explore</item>
         <item>More</item>
         <!--

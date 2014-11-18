@@ -64,6 +64,10 @@
             android:name="com.jabber.fragments.TopicDetailFragment"
             android:configChanges="orientation" >
         </activity>
+        <activity
+            android:name="com.jabber.fragments.ExploreCatergoryFragment"
+            android:configChanges="orientation" >
+        </activity>
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ public class TopicDetailFragment extends FragmentActivity {
 	public void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 
-		setContentView(R.layout.topic_detail_view);
+		setContentView(R.layout.fragment_topic_detail_view);
 
 		 mPagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
 		

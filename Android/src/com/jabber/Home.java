@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.jabber.fragments.ExploreCatergoryFragment;
 import com.jabber.fragments.MoreFragment;
 import com.jabber.fragments.TopicLineFragment;
 import com.jabber.utils.BarcodeScanningApp;
@@ -50,19 +51,21 @@ public class Home extends FragmentActivity {
 		title = drawerTitle = getTitle();
 
 		// (res/values/array.xml)
-		drawerItemTitles = getResources().getStringArray(R.array.Drawer_Item_List);
+		drawerItemTitles = getResources().getStringArray(
+				R.array.Drawer_Item_List);
 
 		// (Root/Parent layout of Home Activity)
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		drawerList = (ListView) findViewById(R.id.left_drawer);
-		drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item,
-				drawerItemTitles));
+		drawerList.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.drawer_list_item, drawerItemTitles));
 		drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		// Top Left toggle
-		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer,
-				R.string.drawer_open, R.string.drawer_close) {
+		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+				R.drawable.ic_drawer, R.string.drawer_open,
+				R.string.drawer_close) {
 			// Called when a drawer has settled in a completely closed state
 			@Override
 			public void onDrawerClosed(View view) {
@@ -88,6 +91,16 @@ public class Home extends FragmentActivity {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
+		
+		
+		//Set the first page to show
+		
+		Fragment f = new ExploreCatergoryFragment();
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.content_frame, f).commit();
+		setTitle("Explore");
+		
 	}
 
 	@Override
@@ -135,7 +148,8 @@ public class Home extends FragmentActivity {
 	class DrawerItemClickListener implements ListView.OnItemClickListener {
 
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
 			selectItem(position);
 		}
 
@@ -149,7 +163,11 @@ public class Home extends FragmentActivity {
 			fragment = new TopicLineFragment();
 		} else if (position == MORE) {
 			fragment = new MoreFragment();
-		} else {
+		} else if (position == EXPLORE) {
+			fragment = new ExploreCatergoryFragment();
+		}
+
+		else {
 			fragment = new HomeFragment();
 			Bundle args = new Bundle();
 			args.putInt(HomeFragment.DRAWER_ITEM_NUMBER, position);
@@ -159,7 +177,8 @@ public class Home extends FragmentActivity {
 
 		// Insert the fragment by replacing any existing fragment
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+		fragmentManager.beginTransaction()
+				.replace(R.id.content_frame, fragment).commit();
 
 		// Highlight the selected item, update the title & close the drawer
 		drawerList.setItemChecked(position, true);
@@ -184,12 +203,15 @@ public class Home extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+			View rootView = inflater.inflate(R.layout.fragment_home, container,
+					false);
 			int i = getArguments().getInt(DRAWER_ITEM_NUMBER);
-			String drawer_item_title = getResources().getStringArray(R.array.Drawer_Item_List)[i];
+			String drawer_item_title = getResources().getStringArray(
+					R.array.Drawer_Item_List)[i];
 
 			if (drawer_item_title.equalsIgnoreCase("Scanner") == true) {
-				Intent intent = new Intent(getActivity(), BarcodeScanningApp.class);
+				Intent intent = new Intent(getActivity(),
+						BarcodeScanningApp.class);
 				getActivity().startActivity(intent);
 			}
 

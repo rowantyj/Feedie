@@ -22,12 +22,13 @@ public class AboutDetailFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_detail_tab, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_detail_tab,
+				container, false);
 		topicDetailTV = (TextView) rootView.findViewById(R.id.topic_detailTV);
 
-		
 		return rootView;
 	}
 
@@ -36,12 +37,12 @@ public class AboutDetailFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
-		// dedicate adapter to take over loading
+		
+		
+		 /*dedicate adapter to take over loading
 
-		// DetailTabAdapter mAdapter = new DetailTabAdapter();
-
-		// DetailTabAdapter mAdapter = new DetailTabAdapter(getActivity(),
-		// null);
+		 DetailTabAdapter mAdapter = new DetailTabAdapter();
+		 DetailTabAdapter mAdapter = new DetailTabAdapter(getActivity(),null);*/
 
 	}
 }
