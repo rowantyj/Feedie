@@ -26,11 +26,18 @@ public class CommentTabAdapter extends ArrayAdapter<Comment> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 			
+		Comment currentItem = commentList.get(position);
+		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		convertView = inflater.inflate(R.layout.custom_comment_list, parent, false);
 		
 		TextView commentTV = (TextView) convertView.findViewById(R.id.commentTV);
-		commentTV.setText(commentList.get(position).getContent()+ " x " + position + "");
+		TextView timestampTV = (TextView) convertView.findViewById(R.id.time_stampTV);
+		
+		
+		
+		commentTV.setText(currentItem.getContent());
+		timestampTV.setText(currentItem.getTimestamp());
 		
 		
 		return convertView;
