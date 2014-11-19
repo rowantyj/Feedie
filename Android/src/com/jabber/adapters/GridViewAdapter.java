@@ -6,7 +6,9 @@ import java.util.List;
 
 import android.R.anim;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jabber.R;
+import com.jabber.fragments.ExploreFragment;
 
 public class GridViewAdapter extends ArrayAdapter<String> {
 
@@ -52,11 +55,21 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 			
 			@Override
 			public void onClick(View v) {
+				
+				
 				String toastMsg = categoryList.get(position) + " is clicked!";
 
 				Toast t = Toast.makeText(getContext(), toastMsg, Toast.LENGTH_SHORT);
 				t.setGravity(Gravity.CENTER, 0, 0);
 				t.show();
+				
+				//The selection will determine the Filter parameter then pass to next screen
+
+				context.startActivity(new Intent(context, ExploreFragment.class));
+				
+				
+				
+				
 
 			}
 		});

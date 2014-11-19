@@ -42,12 +42,16 @@ public class Config {
 	public static final String SP_NATIONALITY = SP_PATH + "nationality";
 	public static final String SP_GENDER = SP_PATH + "gender";
 	public static final String SP_DOB = SP_PATH + "dob";
+	
+	
 
 	public static final String SP_LOGGED_IN = SP_PATH + "logged_in";
 	public static final String SP_SESSION_TOKEN = SP_PATH + "session_token";
 
 	// Topics
 	public static final String SP_TOPIC = SP_PATH + "topic";
+	public static final String SP_COMMENT = SP_PATH + "comment";
+	
 
 	/*
 	 * USE: getSharedPreferences(_SP_NAME, Context.MODE_PRIVATE).edit()
