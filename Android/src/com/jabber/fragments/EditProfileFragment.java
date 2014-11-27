@@ -349,7 +349,7 @@ public class EditProfileFragment extends Fragment implements
 			AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 			dialog.setTitle("Date of Birth");
 			LayoutInflater inflater = getActivity().getLayoutInflater();
-			View view = inflater.inflate(R.layout.dob_dialog, null);
+			View view = inflater.inflate(R.layout.dialog_dob, null);
 			dialog.setView(view);
 			spinYear = (Spinner) view.findViewById(R.id.yearSpinner);
 			spinMonth = (Spinner) view.findViewById(R.id.monthSpinner);
@@ -362,8 +362,11 @@ public class EditProfileFragment extends Fragment implements
 						@Override
 						public void onClick(DialogInterface dialog, int which)
 						{
-							// TODO Auto-generated method stub
-
+							dayStr = spinDay.getSelectedItem().toString();
+							monthStr = (spinMonth.getSelectedItemPosition() + 1) + "";
+							yearStr = spinYear.getSelectedItem().toString();
+							
+							dobET.setText(dayStr + " / " + "0" + monthStr + " / " + yearStr);
 						}
 					});
 			dialog.setNegativeButton("Cancel",
