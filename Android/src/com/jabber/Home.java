@@ -21,10 +21,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jabber.fragments.CreateTopicFragment;
 import com.jabber.fragments.ExploreCatergoryFragment;
 import com.jabber.fragments.MoreFragment;
 import com.jabber.fragments.TopicLineFragment;
 import com.jabber.utils.BarcodeScanningApp;
+import com.jabber.utils.Config;
 
 public class Home extends FragmentActivity {
 
@@ -108,6 +110,20 @@ public class Home extends FragmentActivity {
 		setTitle("Explore");
 
 	}
+	
+	
+	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		
+		
+	}
+
+
+
 
 	/*
 	 * Double back to confirm exit
@@ -165,7 +181,9 @@ public class Home extends FragmentActivity {
 		
 		if (item.getItemId() == R.id.action_add_btn) {
 			
-			
+			Intent intent = new Intent(getApplicationContext(), CreateTopicFragment.class);
+//			startActivityForResult(intent, Config.REQUEST_CREATE_TOPIC);
+			startActivity(intent);
 			return true;
 		}
 		

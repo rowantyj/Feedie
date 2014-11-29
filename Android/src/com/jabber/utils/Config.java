@@ -1,5 +1,6 @@
 package com.jabber.utils;
 
+import android.R.integer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
@@ -59,7 +60,10 @@ public class Config {
 	 */
 	
 
-	
+	/*
+	 * REQUEST CODE
+	 */
+	public static final int REQUEST_CREATE_TOPIC= 0;
 
 	
 	

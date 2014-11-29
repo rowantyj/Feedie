@@ -43,6 +43,15 @@ OnItemClickListener {
 		return rootView;
 	}
 
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		
+		
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 
@@ -66,7 +75,7 @@ OnItemClickListener {
 			topicList = savedInstanceState.getParcelableArrayList("topicList");
 			Toast.makeText(getActivity(), "OLD", Toast.LENGTH_SHORT).show();
 		}
-
+		
 		mAdapter = new TopicLineAdapter(getActivity(), topicList);
 		setListAdapter(mAdapter);
 		getListView().setOnItemClickListener(this);
