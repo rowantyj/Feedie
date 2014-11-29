@@ -13,6 +13,7 @@
     <string name="new_password">New Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="email">Email</string>
+    <string name="dob">Date of birth</string>
     <string name="nationality">Nationality</string>
     <string name="fullname">Full Name</string>
     <string name="male">Male</string>

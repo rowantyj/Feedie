@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,7 +23,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.jabber.R;
 
@@ -33,12 +31,11 @@ public class EditProfileFragment extends Fragment implements
 {
 
 	private EditText				oldPassET, newPassET, confirmPassET,
-			emailET, fullNameET, countryET;
+			emailET, dobET, fullNameET, countryET;
 	private AutoCompleteTextView	countryAutoTV;
 	private RadioButton				maleRB, femaleRB;
 	private RadioGroup				rg;
 	private Spinner					spinYear, spinMonth, spinDay;
-	private Button					passwordBtn;
 
 	private String					dayStr, monthStr, yearStr;
 	int								dayIndex;
@@ -61,25 +58,21 @@ public class EditProfileFragment extends Fragment implements
 		View rootView = inflater.inflate(R.layout.fragment_edit_profile,
 				container, false);
 
-		oldPassET = (EditText) rootView.findViewById(R.id.oldPasswordET);
-		newPassET = (EditText) rootView.findViewById(R.id.newPasswordET);
-		confirmPassET = (EditText) rootView
-				.findViewById(R.id.confirmPasswordET);
-		emailET = (EditText) rootView.findViewById(R.id.emailET);
 		fullNameET = (EditText) rootView.findViewById(R.id.nameET);
+		emailET = (EditText) rootView.findViewById(R.id.emailET);
 		countryAutoTV = (AutoCompleteTextView) rootView
 				.findViewById(R.id.countryAutoTV);
+		dobET = (EditText) rootView.findViewById(R.id.dobET);
 
 		maleRB = (RadioButton) rootView.findViewById(R.id.radioMale);
 		femaleRB = (RadioButton) rootView.findViewById(R.id.radioFemale);
 		rg = (RadioGroup) rootView.findViewById(R.id.radioGender);
+		oldPassET = (EditText) rootView.findViewById(R.id.oldPasswordET);
+		newPassET = (EditText) rootView.findViewById(R.id.newPasswordET);
+		confirmPassET = (EditText) rootView
+				.findViewById(R.id.confirmPasswordET);
 
-		/*spinYear = (Spinner) rootView.findViewById(R.id.yearSpinner);
-		spinMonth = (Spinner) rootView.findViewById(R.id.monthSpinner);
-		spinDay = (Spinner) rootView.findViewById(R.id.daySpinner);*/
-
-		passwordBtn = (Button) rootView.findViewById(R.id.dobBtn);
-		passwordBtn.setOnClickListener(this);
+		dobET.setOnClickListener(this);
 
 		rg.setOnCheckedChangeListener(this);
 		// populateDOBSpinner();
@@ -351,12 +344,12 @@ public class EditProfileFragment extends Fragment implements
 	public void onClick(View v)
 	{
 		int id = v.getId();
-		if (id == R.id.dobBtn)
+		if (id == R.id.dobET)
 		{
 			AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 			dialog.setTitle("Date of Birth");
 			LayoutInflater inflater = getActivity().getLayoutInflater();
-			View view = inflater.inflate(R.layout.dob_dialog, null);
+			View view = inflater.inflate(R.layout.dialog_dob, null);
 			dialog.setView(view);
 			spinYear = (Spinner) view.findViewById(R.id.yearSpinner);
 			spinMonth = (Spinner) view.findViewById(R.id.monthSpinner);
@@ -369,8 +362,11 @@ public class EditProfileFragment extends Fragment implements
 						@Override
 						public void onClick(DialogInterface dialog, int which)
 						{
-							// TODO Auto-generated method stub
-
+							dayStr = spinDay.getSelectedItem().toString();
+							monthStr = (spinMonth.getSelectedItemPosition() + 1) + "";
+							yearStr = spinYear.getSelectedItem().toString();
+							
+							dobET.setText(dayStr + " / " + "0" + monthStr + " / " + yearStr);
 						}
 					});
 			dialog.setNegativeButton("Cancel",
@@ -388,7 +384,7 @@ public class EditProfileFragment extends Fragment implements
 		}
 		else if (id == R.id.confirmBtn)
 		{
-			;
+			
 		}
 	}
 
