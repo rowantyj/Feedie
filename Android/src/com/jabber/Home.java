@@ -1,5 +1,6 @@
 package com.jabber;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,9 +32,11 @@ public class Home extends FragmentActivity {
 	private DrawerLayout drawerLayout;
 	private ListView drawerList;
 
+
 	private CharSequence drawerTitle;
 	private CharSequence title;
 	private ActionBarDrawerToggle drawerToggle;
+
 	private final static int TOPICLINE = 0;
 	private final static int EXPLORE = 1;
 	private final static int MORE = 2;
@@ -145,7 +149,7 @@ public class Home extends FragmentActivity {
 		// If the nav drawer is open, hide action items related to the content
 		// view
 		boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-		menu.findItem(R.id.action_add).setVisible(!drawerOpen);
+		menu.findItem(R.id.action_add_btn).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -154,8 +158,17 @@ public class Home extends FragmentActivity {
 		// Pass the event to ActionBarDrawerToggle, if it returns true, then i
 		// has handled the app icon touch event
 		if (drawerToggle.onOptionsItemSelected(item)) {
+	
+			
 			return true;
 		}
+		
+		if (item.getItemId() == R.id.action_add_btn) {
+			
+			
+			return true;
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 

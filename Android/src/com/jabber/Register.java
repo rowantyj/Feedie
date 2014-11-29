@@ -10,10 +10,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -303,7 +305,17 @@ public class Register extends Activity implements OnClickListener {
 	public void onClick(View v) {
 
 		if (v.getId() == R.id.submitBtn) {
-			new CreateUser().execute();
+//			new CreateUser().execute();
+			
+			Toast t = Toast.makeText(getBaseContext(), "Account Registered", Toast.LENGTH_SHORT);
+
+			t.setGravity(Gravity.CENTER, 0, 0);
+			t.show();
+			
+			
+			onBackPressed();
+			
+			
 		}
 
 	}

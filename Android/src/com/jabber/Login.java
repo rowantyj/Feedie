@@ -3,15 +3,20 @@ package com.jabber;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.Destroyable;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 // import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -98,7 +103,33 @@ public class Login extends Activity implements OnClickListener {
 			startActivity(i);
 		}
 		if (v.getId() == R.id.SIBtn) {
-			new AttemptLogin().execute();
+			
+			// new AttemptLogin().execute();
+			
+			
+//			if (emailET.getText().toString().equalsIgnoreCase("admin")
+//					&& passwordET.getText().toString().equalsIgnoreCase("admin")) {
+//				
+//
+//			}else {
+//				Toast.makeText(getApplicationContext(), "Enter your email or password!", Toast.LENGTH_LONG).show();
+//			}
+			
+			// Debugging admin sign in
+			AlertDialog.Builder adb = new AlertDialog.Builder(this);
+			adb.setTitle("Debugging Mode");
+			adb.setMessage("Admin logging only");
+			adb.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					startActivity(new Intent(getApplicationContext(), Home.class));
+					finish();
+				}
+			});
+			adb.show();
+
 		}
 	}
 

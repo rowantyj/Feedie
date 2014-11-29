@@ -15,6 +15,24 @@
         <item >Report a problem</item>
         -->
     </string-array>
+    <string-array name="topic_category">
+        <item>Products</item>
+        <item>Places</item>
+        <item>Issues</item>
+        <item>Event</item>
+    </string-array>
+    
+    <string-array name="places_category">
+        <item>Restaurants</item>
+        <item>Cinemas</item>
+        <item>Bars &amp; Clubs</item>
+        <item>Recreational Facilities</item>
+        <item>Shop &amp; Outlet</item>
+        <item>Mall &amp; Plaza</item>
+        <item>Hotels</item>
+        <item>Others</item>
+    </string-array>
+    
     <string-array name="countries_list">
         <item>Afghanistan</item>
         <item>Albania</item>

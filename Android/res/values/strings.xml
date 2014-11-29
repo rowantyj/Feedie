@@ -88,25 +88,13 @@ Jabber has the right to modify the privacy policy from time to time. Hence, Jabb
         <item>Topic 1</item>
         <item>Topic 2</item>
         <item>Topic 3</item>
-        <item>Topic 4</item>
-        <item>Topic 5</item>
-        <item>Topic 6</item>
-        <item>Topic 7</item>
-        <item>Topic 8</item>
-        <item>Topic 9</item>
-        <item>Topic 10</item>
+
     </string-array>
     <string-array name="desc">
         <item>Sample descriptions</item>
         <item>Sample descriptions</item>
         <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
-        <item>Sample descriptions</item>
+
     </string-array>
 
     <array name="indicator">

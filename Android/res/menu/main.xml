@@ -1,5 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_add"
+    <item android:id="@+id/action_add_btn"
           android:icon="@drawable/action_add"
           android:title="@string/action_add"
           android:showAsAction="ifRoom|withText" />
