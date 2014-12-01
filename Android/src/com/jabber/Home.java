@@ -1,6 +1,5 @@
 package com.jabber;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,42 +16,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jabber.fragments.CameraFragment;
 import com.jabber.fragments.CreateTopicFragment;
-import com.jabber.fragments.ExploreCatergoryFragment;
+import com.jabber.fragments.ExploreCategoryFragment;
 import com.jabber.fragments.MoreFragment;
 import com.jabber.fragments.TopicLineFragment;
 import com.jabber.utils.BarcodeScanningApp;
-import com.jabber.utils.Config;
 
-public class Home extends FragmentActivity {
+public class Home extends FragmentActivity
+{
 
-	private String[] drawerItemTitles;
-	private DrawerLayout drawerLayout;
-	private ListView drawerList;
+	private String[]				drawerItemTitles;
+	private DrawerLayout			drawerLayout;
+	private ListView				drawerList;
 
+	private CharSequence			drawerTitle;
+	private CharSequence			title;
+	private ActionBarDrawerToggle	drawerToggle;
 
-	private CharSequence drawerTitle;
-	private CharSequence title;
-	private ActionBarDrawerToggle drawerToggle;
+	private final static int		TOPICLINE			= 0;
+	private final static int		EXPLORE				= 1;
+	private final static int		MORE				= 2;
+	private final static int		SCANNER				= 3;
+	private final static int		EDIT_PROFILE		= 4;
+	private final static int		PRIVACY_POLICY		= 5;
+	private final static int		TERMS_OF_SERVICE	= 6;
+	private final static int		ABOUT_US			= 7;
+	private final static int		REPORT_PROBLEM		= 8;
 
-	private final static int TOPICLINE = 0;
-	private final static int EXPLORE = 1;
-	private final static int MORE = 2;
-	private final static int SCANNER = 3;
-	private final static int EDIT_PROFILE = 4;
-	private final static int PRIVACY_POLICY = 5;
-	private final static int TERMS_OF_SERVICE = 6;
-	private final static int ABOUT_US = 7;
-	private final static int REPORT_PROBLEM = 8;
-
-	private static long back_pressed;
+	private static long				back_pressed;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 
@@ -74,10 +73,12 @@ public class Home extends FragmentActivity {
 		// Top Left toggle
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
-				R.string.drawer_close) {
+				R.string.drawer_close)
+		{
 			// Called when a drawer has settled in a completely closed state
 			@Override
-			public void onDrawerClosed(View view) {
+			public void onDrawerClosed(View view)
+			{
 				getActionBar().setTitle(title);
 				invalidateOptionsMenu(); // creates call to
 											// onPrepareOptionMenu()
@@ -85,7 +86,8 @@ public class Home extends FragmentActivity {
 
 			// Called when a drawer has settled in a completely open state
 			@Override
-			public void onDrawerOpened(View drawerView) {
+			public void onDrawerOpened(View drawerView)
+			{
 				getActionBar().setTitle(drawerTitle);
 				invalidateOptionsMenu();
 			}
@@ -103,33 +105,27 @@ public class Home extends FragmentActivity {
 
 		// Set the first page to show
 
-		Fragment f = new ExploreCatergoryFragment();
+		Fragment f = new ExploreCategoryFragment();
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction().replace(R.id.content_frame, f)
 				.commit();
 		setTitle("Explore");
 
 	}
-	
-	
-	
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
 		super.onActivityResult(requestCode, resultCode, data);
-		
-		
-		
+
 	}
-
-
-
 
 	/*
 	 * Double back to confirm exit
 	 */
 	@Override
-	public void onBackPressed() {
+	public void onBackPressed()
+	{
 		if (back_pressed + 2000 > System.currentTimeMillis())
 			super.onBackPressed();
 		else
@@ -139,7 +135,8 @@ public class Home extends FragmentActivity {
 	}
 
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
+	protected void onPostCreate(Bundle savedInstanceState)
+	{
 		super.onPostCreate(savedInstanceState);
 
 		// Sync the toggle state after onRestoreInstanceState has occurred
@@ -147,13 +144,15 @@ public class Home extends FragmentActivity {
 	}
 
 	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
+	public void onConfigurationChanged(Configuration newConfig)
+	{
 		super.onConfigurationChanged(newConfig);
 		drawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
@@ -161,7 +160,8 @@ public class Home extends FragmentActivity {
 
 	// Called whenever we call invalidateOptionMenu()
 	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
+	public boolean onPrepareOptionsMenu(Menu menu)
+	{
 		// If the nav drawer is open, hide action items related to the content
 		// view
 		boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
@@ -170,50 +170,66 @@ public class Home extends FragmentActivity {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		// Pass the event to ActionBarDrawerToggle, if it returns true, then i
 		// has handled the app icon touch event
-		if (drawerToggle.onOptionsItemSelected(item)) {
-	
-			
+		if (drawerToggle.onOptionsItemSelected(item))
+		{
+
 			return true;
 		}
-		
-		if (item.getItemId() == R.id.action_add_btn) {
-			
-			Intent intent = new Intent(getApplicationContext(), CreateTopicFragment.class);
-//			startActivityForResult(intent, Config.REQUEST_CREATE_TOPIC);
+
+		if (item.getItemId() == R.id.action_add_btn)
+		{
+
+			Intent intent = new Intent(getApplicationContext(),
+					CreateTopicFragment.class);
+			// startActivityForResult(intent, Config.REQUEST_CREATE_TOPIC);
 			startActivity(intent);
 			return true;
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
 	// Custom listener for drawer item
-	class DrawerItemClickListener implements ListView.OnItemClickListener {
+	class DrawerItemClickListener implements ListView.OnItemClickListener
+	{
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
+				long id)
+		{
 			selectItem(position);
 		}
 
 	}
 
-	private void selectItem(int position) {
+	private void selectItem(int position)
+	{
 		// Create a new fragment
 		Fragment fragment = new HomeFragment();
 
-		if (position == TOPICLINE) {
+		if (position == TOPICLINE)
+		{
 			fragment = new TopicLineFragment();
-		} else if (position == MORE) {
+		}
+		else if (position == MORE)
+		{
 			fragment = new MoreFragment();
-		} else if (position == EXPLORE) {
-			fragment = new ExploreCatergoryFragment();
+		}
+		else if (position == EXPLORE)
+		{
+			fragment = new ExploreCategoryFragment();
+		}
+		else if(position == SCANNER)
+		{
+			fragment = new CameraFragment();
 		}
 
-		else {
+		else
+		{
 			fragment = new HomeFragment();
 			Bundle args = new Bundle();
 			args.putInt(HomeFragment.DRAWER_ITEM_NUMBER, position);
@@ -233,29 +249,34 @@ public class Home extends FragmentActivity {
 	}
 
 	@Override
-	public void setTitle(CharSequence titleIn) {
+	public void setTitle(CharSequence titleIn)
+	{
 		title = titleIn;
 		getActionBar().setTitle(title);
 	}
 
 	/** Fragment that appears in the "content_frame", shows a planet */
-	public static class HomeFragment extends Fragment {
-		public static final String DRAWER_ITEM_NUMBER = "item_number";
+	public static class HomeFragment extends Fragment
+	{
+		public static final String	DRAWER_ITEM_NUMBER	= "item_number";
 
-		public HomeFragment() {
+		public HomeFragment()
+		{
 			// Empty constructor required for fragment subclasses
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
+				Bundle savedInstanceState)
+		{
 			View rootView = inflater.inflate(R.layout.fragment_home, container,
 					false);
 			int i = getArguments().getInt(DRAWER_ITEM_NUMBER);
 			String drawer_item_title = getResources().getStringArray(
 					R.array.Drawer_Item_List)[i];
 
-			if (drawer_item_title.equalsIgnoreCase("Scanner") == true) {
+			if (drawer_item_title.equalsIgnoreCase("Scanner") == true)
+			{
 				Intent intent = new Intent(getActivity(),
 						BarcodeScanningApp.class);
 				getActivity().startActivity(intent);

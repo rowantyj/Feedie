@@ -1,7 +1,9 @@
 package com.jabber;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -12,15 +14,18 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -29,21 +34,24 @@ import android.widget.Toast;
 
 import com.jabber.utils.JSONParser;
 
-public class Register extends Activity implements OnClickListener {
+public class Register extends Activity implements OnClickListener
+{
 
-	private ProgressDialog pDialog;
-	private Button submitBtn;
-	private EditText usernameET, passwordET, confirmPassET, emailET, nameET,
-			countryET;
+	private ProgressDialog			pDialog;
+	private Button					submitBtn;
+	private EditText				usernameET, passwordET, confirmPassET,
+			emailET, nameET, dobET;
 
-	private RadioButton maleRB, femaleRB;
+	private AutoCompleteTextView	countryAutoTV;
 
-	private String dayStr, monthStr, yearStr;
-	private String gender;
-	private Spinner spinYear, spinMonth, spinDay;
+	private RadioButton				maleRB, femaleRB;
 
-	JSONParser jsonParser = new JSONParser();
-	int dayIndex;
+	private String					dayStr, monthStr, yearStr;
+	private String					gender;
+	private Spinner					spinYear, spinMonth, spinDay;
+
+	JSONParser						jsonParser	= new JSONParser();
+	int								dayIndex;
 
 	// php login script location:
 
@@ -57,7 +65,7 @@ public class Register extends Activity implements OnClickListener {
 	// "http://192.168.0.4/jabber/register.php";
 
 	// Rowan's IP
-	private static final String LOGIN_URL = "http://192.168.1.5/jabber/register.php";
+	private static final String		LOGIN_URL	= "http://192.168.1.5/jabber/register.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =
@@ -68,11 +76,12 @@ public class Register extends Activity implements OnClickListener {
 	// "http://www.yourdomain.com/webservice/login.php";
 
 	// JSON element ids from response of php script:
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
+	private static final String		TAG_SUCCESS	= "success";
+	private static final String		TAG_MESSAGE	= "message";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_page);
 
@@ -80,17 +89,19 @@ public class Register extends Activity implements OnClickListener {
 
 		initView();
 
-		populateDOBSpinner();
+		populateCountry();
 	}
 
-	void initView() {
+	void initView()
+	{
 		usernameET = (EditText) findViewById(R.id.usernameET);
 		passwordET = (EditText) findViewById(R.id.passwordET);
 		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
 		emailET = (EditText) findViewById(R.id.emailET);
 		nameET = (EditText) findViewById(R.id.nameET);
-		countryET = (EditText) findViewById(R.id.countryET);
-		confirmPassET = (EditText) findViewById(R.id.confirmPasswordET);
+		dobET = (EditText) findViewById(R.id.dobET);
+		dobET.setOnClickListener(this);
+		countryAutoTV = (AutoCompleteTextView) findViewById(R.id.countryAutoTV);
 
 		maleRB = (RadioButton) findViewById(R.id.radioMale);
 		femaleRB = (RadioButton) findViewById(R.id.radioFemale);
@@ -103,20 +114,21 @@ public class Register extends Activity implements OnClickListener {
 		submitBtn.setOnClickListener(this);
 	}
 
-	void populateDOBSpinner() {
+	void populateDOBSpinner()
+	{
 		// Populate year Spinner
 		ArrayList<String> years = new ArrayList<String>();
 
 		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 
-		for (int i = 1900; i <= thisYear; i++) {
+		for (int i = 1900; i <= thisYear; i++)
+		{
 			years.add(Integer.toString(i));
 		}
 
 		ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, years);
 
-		spinYear = (Spinner) findViewById(R.id.yearSpinner);
 		spinYear.setAdapter(yearAdapter);
 
 		// Populate month Spinner
@@ -126,30 +138,33 @@ public class Register extends Activity implements OnClickListener {
 				"June", "July", "August", "September", "October", "November",
 				"December" };
 
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 12; i++)
+		{
 			months.add(monthArray[i]);
 		}
 
 		ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, months);
 
-		spinMonth = (Spinner) findViewById(R.id.monthSpinner);
 		spinMonth.setAdapter(monthAdapter);
 
 		// Populate day Spinner
 		final ArrayList<String> days = new ArrayList<String>();
-		spinDay = (Spinner) findViewById(R.id.daySpinner);
 
 		// If Months is changed
-		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener() {
+		spinMonth.setOnItemSelectedListener(new OnItemSelectedListener()
+		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
+					int position, long id)
+			{
 				days.clear();
 				// Months with 31 days
 				if (position == 0 || position == 2 || position == 4
-						|| position == 8 || position == 9 || position == 11) {
-					for (int i = 1; i < 32; i++) {
+						|| position == 8 || position == 9 || position == 11)
+				{
+					for (int i = 1; i < 32; i++)
+					{
 						days.add(Integer.toString(i));
 
 						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -165,8 +180,10 @@ public class Register extends Activity implements OnClickListener {
 
 				{
 					// Leap Year
-					if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0) {
-						for (int i = 1; i < 30; i++) {
+					if (Integer.parseInt(spinYear.getSelectedItem().toString()) % 4 == 0)
+					{
+						for (int i = 1; i < 30; i++)
+						{
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -182,8 +199,10 @@ public class Register extends Activity implements OnClickListener {
 						}
 					}
 					// Not Leap Year
-					else {
-						for (int i = 1; i < 29; i++) {
+					else
+					{
+						for (int i = 1; i < 29; i++)
+						{
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -200,8 +219,10 @@ public class Register extends Activity implements OnClickListener {
 					}
 				}
 				// Months with 30 days
-				else {
-					for (int i = 1; i < 31; i++) {
+				else
+				{
+					for (int i = 1; i < 31; i++)
+					{
 						days.add(Integer.toString(i));
 
 						ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -222,24 +243,30 @@ public class Register extends Activity implements OnClickListener {
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
+			public void onNothingSelected(AdapterView<?> parent)
+			{
 			}
 
 		});
 
 		// If Year is changed
-		spinYear.setOnItemSelectedListener(new OnItemSelectedListener() {
+		spinYear.setOnItemSelectedListener(new OnItemSelectedListener()
+		{
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
+					int position, long id)
+			{
 				// Leap Year
 				if (Integer.parseInt(spinYear.getItemAtPosition(position)
-						.toString()) % 4 == 0) {
+						.toString()) % 4 == 0)
+				{
 					// February
-					if (spinMonth.getSelectedItemPosition() == 1) {
+					if (spinMonth.getSelectedItemPosition() == 1)
+					{
 						days.clear();
-						for (int i = 1; i < 30; i++) {
+						for (int i = 1; i < 30; i++)
+						{
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -256,11 +283,14 @@ public class Register extends Activity implements OnClickListener {
 					}
 				}
 				// Not Leap Year
-				else {
+				else
+				{
 					// February
-					if (spinMonth.getSelectedItemPosition() == 1) {
+					if (spinMonth.getSelectedItemPosition() == 1)
+					{
 						days.clear();
-						for (int i = 1; i < 29; i++) {
+						for (int i = 1; i < 29; i++)
+						{
 							days.add(Integer.toString(i));
 
 							ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(
@@ -282,67 +312,127 @@ public class Register extends Activity implements OnClickListener {
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
+			public void onNothingSelected(AdapterView<?> parent)
+			{
 			}
 
 		});
-		spinDay.setOnItemSelectedListener(new OnItemSelectedListener() {
+		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
+		{
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
+					int position, long id)
+			{
 				dayIndex = position;
 				dayStr = position + 1 + "";
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
+			public void onNothingSelected(AdapterView<?> arg0)
+			{
 			}
 		});
 	}
 
-	@Override
-	public void onClick(View v) {
+	void populateCountry()
+	{
+		List <String> countries = Arrays.asList(getResources().getStringArray(R.array.countries_list));
 
-		if (v.getId() == R.id.submitBtn) {
-//			new CreateUser().execute();
-			
-			Toast t = Toast.makeText(getBaseContext(), "Account Registered", Toast.LENGTH_SHORT);
+		Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				this,
+				android.R.layout.simple_dropdown_item_1line, countries);
+		countryAutoTV.setAdapter(adapter);
+	}
+	
+	@Override
+	public void onClick(View v)
+	{
+
+		if (v.getId() == R.id.submitBtn)
+		{
+			// new CreateUser().execute();
+
+			Toast t = Toast.makeText(getBaseContext(), "Account Registered",
+					Toast.LENGTH_SHORT);
 
 			t.setGravity(Gravity.CENTER, 0, 0);
 			t.show();
-			
-			
+
 			onBackPressed();
-			
-			
+
+		}
+		else if(v.getId() == R.id.dobET)
+		{
+			Toast.makeText(this, "DOB", Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+			dialog.setTitle("Date of Birth");
+			LayoutInflater inflater = getLayoutInflater();
+			View view = inflater.inflate(R.layout.dialog_dob, null);
+			dialog.setView(view);
+			spinYear = (Spinner) view.findViewById(R.id.yearSpinner);
+			spinMonth = (Spinner) view.findViewById(R.id.monthSpinner);
+			spinDay = (Spinner) view.findViewById(R.id.daySpinner);
+			populateDOBSpinner();
+			dialog.setPositiveButton("Confirm Change",
+					new DialogInterface.OnClickListener()
+					{
+
+						@Override
+						public void onClick(DialogInterface dialog, int which)
+						{
+							dayStr = spinDay.getSelectedItem().toString();
+							monthStr = (spinMonth.getSelectedItemPosition() + 1) + "";
+							yearStr = spinYear.getSelectedItem().toString();
+							
+							dobET.setText(dayStr + " / " + "0" + monthStr + " / " + yearStr);
+						}
+					});
+			dialog.setNegativeButton("Cancel",
+					new DialogInterface.OnClickListener()
+					{
+
+						@Override
+						public void onClick(DialogInterface dialog, int which)
+						{
+						}
+					});
+
+			dialog.create();
+			dialog.show();
 		}
 
 	}
 
-	public void onRadioButtonClicked(View view) {
+	public void onRadioButtonClicked(View view)
+	{
 
 		boolean checked = ((RadioButton) view).isChecked();
 
-		switch (view.getId()) {
-		case R.id.radioMale:
-			if (checked)
-				gender = "M";
-			break;
-		case R.id.radioFemale:
-			if (checked)
-				gender = "F";
-			break;
+		switch (view.getId())
+		{
+			case R.id.radioMale:
+				if (checked)
+					gender = "M";
+				break;
+			case R.id.radioFemale:
+				if (checked)
+					gender = "F";
+				break;
 		}
 	}
 
-	class CreateUser extends AsyncTask<String, String, String> {
+	class CreateUser extends AsyncTask<String, String, String>
+	{
 
 		/** Before starting background thread Show Progress Dialog */
-		boolean failure = false;
+		boolean	failure	= false;
 
 		@Override
-		protected void onPreExecute() {
+		protected void onPreExecute()
+		{
 			super.onPreExecute();
 			pDialog = new ProgressDialog(Register.this);
 			pDialog.setMessage("Creating User...");
@@ -352,7 +442,8 @@ public class Register extends Activity implements OnClickListener {
 		}
 
 		@Override
-		protected String doInBackground(String... args) {
+		protected String doInBackground(String... args)
+		{
 			// Check for success tag
 			int success;
 			String username = usernameET.getText().toString();
@@ -361,9 +452,10 @@ public class Register extends Activity implements OnClickListener {
 			String name = nameET.getText().toString();
 			// Gender is already at the top
 			String date_of_birth = yearStr + "-" + monthStr + "-" + dayStr;
-			String country = countryET.getText().toString();
+			String country = countryAutoTV.getText().toString();
 
-			try {
+			try
+			{
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("username", username));
@@ -386,19 +478,24 @@ public class Register extends Activity implements OnClickListener {
 
 				// json success element
 				success = json.getInt(TAG_SUCCESS);
-				if (success == 1) {
+				if (success == 1)
+				{
 					Log.d("Account Created!", json.toString());
 					finish();
 					// Intent i = new Intent(RegisterPage.this,
 					// LoginPage.class);
 					// startActivity(i);
 					return json.getString(TAG_MESSAGE);
-				} else {
+				}
+				else
+				{
 					Log.d("Login Failure!", json.getString(TAG_MESSAGE));
 					return json.getString(TAG_MESSAGE);
 
 				}
-			} catch (JSONException e) {
+			}
+			catch (JSONException e)
+			{
 				e.printStackTrace();
 			}
 
@@ -407,10 +504,12 @@ public class Register extends Activity implements OnClickListener {
 		}
 
 		/** After completing background task Dismiss the progress dialog **/
-		protected void onPostExecute(String file_url) {
+		protected void onPostExecute(String file_url)
+		{
 			// dismiss the dialog once product deleted
 			pDialog.dismiss();
-			if (file_url != null) {
+			if (file_url != null)
+			{
 				Toast.makeText(Register.this, file_url, Toast.LENGTH_LONG)
 						.show();
 			}
