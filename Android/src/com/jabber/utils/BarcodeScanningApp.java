@@ -10,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jabber.R;
-import com.jabber.R.id;
-import com.jabber.R.layout;
 
 public class BarcodeScanningApp extends Activity implements OnClickListener {
     private Button scanBtn;

@@ -5,14 +5,14 @@
         <item>My Topics</item>
         <item>Explore</item>
         <item>More</item>
-        <!--
         <item>Scanner</item>
+        <!--
         <item>Edit Profile</item>
         <item>Privacy Policy</item>
         <item>Terms of Service</item>
         <item >About US</item>
         <item >Log Out</item>
-        <item >Report a problem</item>
+        <item >Report a problem</item>
         -->
     </string-array>
     <string-array name="topic_category">
@@ -21,7 +21,6 @@
         <item>Issues</item>
         <item>Event</item>
     </string-array>
-    
     <string-array name="places_category">
         <item>Restaurants</item>
         <item>Cinemas</item>
@@ -32,7 +31,6 @@
         <item>Hotels</item>
         <item>Others</item>
     </string-array>
-    
     <string-array name="countries_list">
         <item>Afghanistan</item>
         <item>Albania</item>

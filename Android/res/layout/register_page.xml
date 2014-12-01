@@ -17,6 +17,39 @@
     </org.droidparts.widget.ClearableEditText>
 
     <org.droidparts.widget.ClearableEditText
+        android:id="@+id/nameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/fullname"
+        android:inputType="textCapSentences|textPersonName" />
+
+    <org.droidparts.widget.ClearableEditText
+        android:id="@+id/dobET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/dob" />
+
+    <org.droidparts.widget.ClearableEditText
+        android:id="@+id/emailET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <AutoCompleteTextView
+        android:id="@+id/countryAutoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/nationality"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <org.droidparts.widget.ClearableEditText
         android:id="@+id/passwordET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,33 +64,6 @@
         android:ems="10"
         android:hint="@string/confirm_password"
         android:inputType="textPassword" />
-
-    <org.droidparts.widget.ClearableEditText
-        android:id="@+id/emailET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </org.droidparts.widget.ClearableEditText>
-
-    <org.droidparts.widget.ClearableEditText
-        android:id="@+id/nameET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/fullname"
-        android:inputType="textCapSentences|textPersonName" />
-
-    <org.droidparts.widget.ClearableEditText
-        android:id="@+id/countryET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/nationality"
-        android:inputType="textCapSentences|textAutoCorrect" />
 
     <RadioGroup
         android:id="@+id/radioGender"
@@ -82,29 +88,6 @@
             android:text="@string/female" />
     </RadioGroup>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Spinner
-            android:id="@+id/daySpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Spinner
-            android:id="@+id/monthSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Spinner
-            android:id="@+id/yearSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -117,10 +100,10 @@
     </ScrollView>
 
     <CheckBox
-    	android:id="@+id/checkBox1"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="@string/TC_description" />
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TC_description" />
 
     <Button
         android:id="@+id/submitBtn"

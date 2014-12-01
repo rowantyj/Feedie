@@ -1,9 +1,10 @@
 package com.jabber.fragments;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Locale;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -99,17 +99,8 @@ public class EditProfileFragment extends Fragment implements
 
 	void populateCountry()
 	{
-		Locale[] locale = Locale.getAvailableLocales();
-		ArrayList<String> countries = new ArrayList<String>();
-		String country;
-		for (Locale loc : locale)
-		{
-			country = loc.getDisplayCountry();
-			if (country.length() > 0 && !countries.contains(country))
-			{
-				countries.add(country);
-			}
-		}
+		List <String> countries = Arrays.asList(getResources().getStringArray(R.array.countries_list));
+
 		Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(

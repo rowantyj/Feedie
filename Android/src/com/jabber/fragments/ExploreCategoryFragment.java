@@ -13,14 +13,16 @@ import android.widget.GridView;
 import com.jabber.R;
 import com.jabber.adapters.GridViewAdapter;
 
-public class ExploreCatergoryFragment extends Fragment {
+public class ExploreCategoryFragment extends Fragment
+{
 
-	private GridView categoryGV;
-	private ArrayList<String> categoryList = null;
+	private GridView			categoryGV;
+	private ArrayList<String>	categoryList	= null;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+			Bundle savedInstanceState)
+	{
 
 		View rootView = inflater.inflate(R.layout.fragment_explore_category,
 				container, false);
@@ -30,12 +32,12 @@ public class ExploreCatergoryFragment extends Fragment {
 		categoryList = new ArrayList<String>(Arrays.asList("People",
 				"Products", "Places", "Issues", "Services", "Test Dummy"));
 
-		GridViewAdapter mAdapter = new GridViewAdapter(getActivity(), categoryList);
+		GridViewAdapter mAdapter = new GridViewAdapter(getActivity(),
+				categoryList);
 
 		categoryGV.setAdapter(mAdapter);
 
 		return rootView;
 	}
-
 
 }
