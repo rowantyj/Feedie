@@ -116,24 +116,6 @@ public class Login extends Activity implements OnClickListener {
 						"Enter your email or password!", Toast.LENGTH_LONG)
 						.show();
 			}
-
-			// Debugging admin sign in
-//			AlertDialog.Builder adb = new AlertDialog.Builder(this);
-//			adb.setTitle("Debugging Mode");
-//			adb.setMessage("Admin logging only");
-//			adb.setPositiveButton("Proceed",
-//					new DialogInterface.OnClickListener() {
-//
-//						@Override
-//						public void onClick(DialogInterface dialog, int which) {
-//							// TODO Auto-generated method stub
-//							startActivity(new Intent(getApplicationContext(),
-//									Home.class));
-//							finish();
-//						}
-//					});
-//			adb.show();
-//
 		}
 	}
 
