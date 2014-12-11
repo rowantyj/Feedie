@@ -10,7 +10,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 // import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -56,7 +55,8 @@ public class Login extends Activity implements OnClickListener {
 	// "http://192.168.0.4/jabber/login.php";
 
 	// Rowan's IP
-	private static final String LOGIN_URL = "http://192.168.1.5/jabber/login.php";
+	// private static final String LOGIN_URL =
+	// "http://192.168.1.5/jabber/login.php";
 
 	// testing on Emulator:
 	// private static final String LOGIN_URL =
@@ -64,7 +64,7 @@ public class Login extends Activity implements OnClickListener {
 
 	// testing from a real server:
 	// private static final String LOGIN_URL =
-	// "http://www.yourdomain.com/webservice/login.php";
+	// "http://www.jabber-test.netai.net/login.php";
 
 	// JSON element ids from response of php script:
 	private static final String TAG_SUCCESS = "success";
@@ -87,7 +87,8 @@ public class Login extends Activity implements OnClickListener {
 		signInBtn.setOnClickListener(this);
 		signUpBtn.setOnClickListener(this);
 
-		sharedPreferences = getSharedPreferences(Config.SP_PATH, Context.MODE_PRIVATE);
+		sharedPreferences = getSharedPreferences(Config.SP_PATH,
+				Context.MODE_PRIVATE);
 
 		if (sharedPreferences.getBoolean("login", false) == true) {
 			Intent i = new Intent(this, Home.class);
@@ -103,40 +104,43 @@ public class Login extends Activity implements OnClickListener {
 			startActivity(i);
 		}
 		if (v.getId() == R.id.SIBtn) {
-			
-			// new AttemptLogin().execute();
-			
-			
-//			if (emailET.getText().toString().equalsIgnoreCase("admin")
-//					&& passwordET.getText().toString().equalsIgnoreCase("admin")) {
-//				
-//
-//			}else {
-//				Toast.makeText(getApplicationContext(), "Enter your email or password!", Toast.LENGTH_LONG).show();
-//			}
-			
+
+			new AttemptLogin().execute();
+
+			if (emailET.getText().toString().equalsIgnoreCase("admin")
+					&& passwordET.getText().toString()
+							.equalsIgnoreCase("admin")) {
+
+			} else {
+				Toast.makeText(getApplicationContext(),
+						"Enter your email or password!", Toast.LENGTH_LONG)
+						.show();
+			}
+
 			// Debugging admin sign in
-			AlertDialog.Builder adb = new AlertDialog.Builder(this);
-			adb.setTitle("Debugging Mode");
-			adb.setMessage("Admin logging only");
-			adb.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					startActivity(new Intent(getApplicationContext(), Home.class));
-					finish();
-				}
-			});
-			adb.show();
-
+//			AlertDialog.Builder adb = new AlertDialog.Builder(this);
+//			adb.setTitle("Debugging Mode");
+//			adb.setMessage("Admin logging only");
+//			adb.setPositiveButton("Proceed",
+//					new DialogInterface.OnClickListener() {
+//
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							// TODO Auto-generated method stub
+//							startActivity(new Intent(getApplicationContext(),
+//									Home.class));
+//							finish();
+//						}
+//					});
+//			adb.show();
+//
 		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main, menu);
+		// getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -179,7 +183,8 @@ public class Login extends Activity implements OnClickListener {
 
 				Log.d("Request", "STARTING");
 				// Getting product details by making HTTP Request
-				JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST", params);
+				JSONObject json = jsonParser.makeHttpRequest(Config.LOGIN_URL,
+						"POST", params);
 
 				if (json == null)
 					return null;
@@ -194,7 +199,8 @@ public class Login extends Activity implements OnClickListener {
 					Log.d("Login Successful!", json.toString());
 					Intent i = new Intent(Login.this, Home.class);
 
-					sharedPreferences.edit().putBoolean(Config.SP_LOGGED_IN, true).commit();
+					sharedPreferences.edit()
+							.putBoolean(Config.SP_LOGGED_IN, true).commit();
 					finish();
 					startActivity(i);
 					return json.getString(TAG_MESSAGE);

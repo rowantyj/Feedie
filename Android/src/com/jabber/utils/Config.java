@@ -1,9 +1,5 @@
 package com.jabber.utils;
 
-import android.R.integer;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.widget.Toast;
 
 
 /**
@@ -12,12 +8,17 @@ import android.widget.Toast;
  * 
  */
 public class Config {
-
-	public static final String _SERVER_ADDRESS = ""; // ACTUAL SERVER ADDRESS
-	public static final String _TEST_SERVER_ADDRESS = ""; // TEST SERVER ADDRESS
-	public static final String SP_PATH = "com.sp.jabber."; // SHARED PREF.
-															// FILENAME
-
+	 // SERVER ADDRESS
+	public static final String _SERVER_ADDRESS = "";	
+	public static final String _TEST_SERVER_ADDRESS = "http://www.jabber-test.netai.net/";
+	
+	public static final String LOGIN_URL = _TEST_SERVER_ADDRESS + "login.php";
+	public static final String REGISTER_URL = _TEST_SERVER_ADDRESS + "register.php";
+	
+	
+	// SHARED PREF. FILENAME
+	public static final String SP_PATH = "com.sp.jabber."; 
+	
 	/*Ê
 	 * EXTRA_BUNDLE Keys
 	 */
