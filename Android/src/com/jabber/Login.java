@@ -107,15 +107,6 @@ public class Login extends Activity implements OnClickListener {
 
 			new AttemptLogin().execute();
 
-			if (emailET.getText().toString().equalsIgnoreCase("admin")
-					&& passwordET.getText().toString()
-							.equalsIgnoreCase("admin")) {
-
-			} else {
-				Toast.makeText(getApplicationContext(),
-						"Enter your email or password!", Toast.LENGTH_LONG)
-						.show();
-			}
 		}
 	}
 
@@ -183,8 +174,8 @@ public class Login extends Activity implements OnClickListener {
 
 					sharedPreferences.edit()
 							.putBoolean(Config.SP_LOGGED_IN, true).commit();
-					finish();
 					startActivity(i);
+					finish();
 					return json.getString(TAG_MESSAGE);
 				} else if (status == 0) {
 					Log.d("Login Failure!", json.getString(TAG_MESSAGE));

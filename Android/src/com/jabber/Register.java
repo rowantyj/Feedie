@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -86,10 +87,10 @@ public class Register extends Activity implements OnClickListener {
 		setContentView(R.layout.register_page);
 
 		dayIndex = 0;
-
 		initView();
-
 		populateCountry();
+		
+		
 	}
 
 	void initView() {
@@ -323,15 +324,7 @@ public class Register extends Activity implements OnClickListener {
 	public void onClick(View v) {
 
 		if (v.getId() == R.id.submitBtn) {
-			// new CreateUser().execute();
-
-			Toast t = Toast.makeText(getBaseContext(), "Account Registered",
-					Toast.LENGTH_SHORT);
-
-			t.setGravity(Gravity.CENTER, 0, 0);
-			t.show();
-
-			onBackPressed();
+			 new CreateUser().execute();
 
 		} else if (v.getId() == R.id.dobET) {
 			Toast.makeText(this, "DOB", Toast.LENGTH_SHORT).show();
@@ -441,9 +434,9 @@ public class Register extends Activity implements OnClickListener {
 				if (success == 1) {
 					Log.d("Account Created!", json.toString());
 					finish();
-					// Intent i = new Intent(RegisterPage.this,
-					// LoginPage.class);
-					// startActivity(i);
+					 Intent i = new Intent(Register.this,Login.class);
+					 startActivity(i);
+					 finish();
 					return json.getString(TAG_MESSAGE);
 				} else {
 					Log.d("Login Failure!", json.getString(TAG_MESSAGE));
